@@ -1,4 +1,4 @@
-import 'package:clothes_store_mobile_app/app/views/sign_up/verify_code_view.dart';
+import 'package:clothes_store_mobile_app/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,21 +6,18 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../constants/color_constants.dart';
 import '../../constants/text_style.dart';
-import '../../routes/app_routes.dart';
 
-class SignUpView extends StatefulWidget {
-  const SignUpView({super.key});
+class SignInView extends StatefulWidget {
+  const SignInView({super.key});
 
   @override
-  State<SignUpView> createState() => _SignUpViewState();
+  State<SignInView> createState() => _SignInViewState();
 }
 
-class _SignUpViewState extends State<SignUpView> {
-  final TextEditingController _nameController = TextEditingController();
+class _SignInViewState extends State<SignInView> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool isPasswordVisible = false;
-  bool checkBoxValue = false;
 
   @override
   Widget build(BuildContext context) {
@@ -33,58 +30,26 @@ class _SignUpViewState extends State<SignUpView> {
             child: Column(
               children: <Widget>[
                 Text(
-                  'Create Account',
-                  style: TextStyleConstant.lightLight42.copyWith(
-                    height: 0.9,
-                  ),
+                  'Sign In',
+                  style: TextStyleConstant.lightLight42,
                 ),
                 Text(
-                  "Fill your information below or register your social account",
-                  style: TextStyleConstant.lightLight22.copyWith(
-                      color: ColorConstants.neutralLight90, height: 0.9),
-                  textAlign: TextAlign.center,
+                  "Hi Wecome back, you're been missed",
+                  style: TextStyleConstant.lightLight22
+                      .copyWith(color: ColorConstants.neutralLight90),
                 ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Name",
-                    style: TextStyleConstant.lightLight26.copyWith(
-                      height: 0.9,
-                    ),
-                  ),
-                ),
-                TextFormField(
-                  controller: _nameController,
-                  decoration: InputDecoration(
-                    hintText: 'John Doe',
-                    contentPadding: EdgeInsets.symmetric(horizontal: 20.w),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50),
-                      borderSide: const BorderSide(
-                          color: ColorConstants.neutralLight90),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50),
-                      borderSide: const BorderSide(
-                          color: ColorConstants.neutralLight90),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 8.h), // Add this line
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "Email",
-                    style: TextStyleConstant.lightLight26.copyWith(
-                      height: 0.9,
-                    ),
+                    style: TextStyleConstant.lightLight26,
                   ),
                 ),
                 TextFormField(
                   controller: _emailController,
                   decoration: InputDecoration(
-                    hintText: 'example@gmai.com',
                     contentPadding: EdgeInsets.symmetric(horizontal: 20.w),
+                    hintText: 'example@gmai.com',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50),
                       borderSide: const BorderSide(
@@ -97,22 +62,20 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                   ),
                 ),
-                SizedBox(height: 8.h), // Add this line
+                SizedBox(height: 16.h), // Add this line
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "Password",
-                    style: TextStyleConstant.lightLight26.copyWith(
-                      height: 0.9,
-                    ),
+                    style: TextStyleConstant.lightLight26,
                   ),
                 ),
                 TextFormField(
                   controller: _passwordController,
                   obscureText: !isPasswordVisible,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(horizontal: 20.w),
                     hintText: '********',
+                    contentPadding: EdgeInsets.symmetric(horizontal: 20.w),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50),
                       borderSide: const BorderSide(
@@ -147,44 +110,22 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                   ),
                 ),
+                SizedBox(height: 4.h),
                 Align(
-                  alignment: Alignment.centerLeft,
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Checkbox(
-                            value: checkBoxValue,
-                            onChanged: (_) {
-                              setState(() {
-                                checkBoxValue = !checkBoxValue;
-                              });
-                            }),
-                        Text("Agree with",
-                            style: TextStyleConstant.lightLight24.copyWith(
-                              color: ColorConstants.neutralLight120,
-                            )),
-                        SizedBox(
-                          width: 4.w,
-                        ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: Text(
-                            'Terms & Condition',
-                            style: TextStyleConstant.lightLight24.copyWith(
-                              color: ColorConstants.primaryLight110,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                        ),
-                      ]),
+                  alignment: Alignment.centerRight,
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Text(
+                      'Forgot Password?',
+                      style: TextStyleConstant.lightLight24.copyWith(
+                        color: ColorConstants.primaryLight110,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
                 ),
                 GestureDetector(
-                  onTap: () {
-                    // Navigator.pushNamed(context, AppRoutes.VERIFYCODE);
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => VerifyCodeView(email: _emailController.text,))
-                    );
-                  },
+                  onTap: () {},
                   child: Container(
                     alignment: Alignment.center,
                     padding: EdgeInsets.only(
@@ -192,14 +133,15 @@ class _SignUpViewState extends State<SignUpView> {
                       bottom: 8.h,
                     ),
                     margin: EdgeInsets.only(
-                      bottom: 8.h,
+                      top: 12.h,
+                      bottom: 16.h,
                     ),
                     decoration: BoxDecoration(
                       color: ColorConstants.primaryLight110,
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Text(
-                      "Sign Up",
+                      "Sign In",
                       style: TextStyleConstant.regularDark24.copyWith(
                         color: ColorConstants.primaryLight10,
                       ),
@@ -247,7 +189,7 @@ class _SignUpViewState extends State<SignUpView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Already have an account?",
+                    Text("Don't have an account?",
                         style: TextStyleConstant.lightLight24.copyWith(
                           color: ColorConstants.neutralLight120,
                         )),
@@ -256,10 +198,10 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.popAndPushNamed(context, AppRoutes.SIGNIN);
+                        Navigator.pushNamed(context, AppRoutes.SIGNUP);
                       },
                       child: Text(
-                        'Sign In',
+                        'Sign Up',
                         style: TextStyleConstant.lightLight24.copyWith(
                           color: ColorConstants.primaryLight110,
                           decoration: TextDecoration.underline,

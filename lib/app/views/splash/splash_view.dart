@@ -1,4 +1,4 @@
-import 'package:clothes_store_mobile_app/app/routes/app_pages.dart';
+import 'package:clothes_store_mobile_app/app/datasource/local/storage.dart';
 import 'package:clothes_store_mobile_app/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,12 +12,28 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
   @override
-  void initState(){
+  void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.popAndPushNamed(context, AppRoutes.WELCOME);
-    });
+    setupAsyncInitState();
+  }
+  @override
+  void dispose() {
+    super.dispose();
+  }
+  Future<void> setupAsyncInitState() async {
+    bool? isFirstTime = await Storage.getIsFirstTime();
+    if (isFirstTime == true) {
+      Future.delayed(const Duration(seconds: 3), () {
+        Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.SIGNIN, (route) => false);
+      });
+    }
+    else {
+      Future.delayed(const Duration(seconds: 3), () {
+        Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.WELCOME, (route) => false);
+      });
+      Storage.setIsFirstTime(true);
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -36,12 +52,15 @@ class _SplashViewState extends State<SplashView> {
                   fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(width: 10.w,),
-              Text('Fashion Store',
-                style: TextStyle(
-                fontSize: 22.w,
-                fontWeight: FontWeight.bold,
+              SizedBox(
+                width: 10.w,
               ),
+              Text(
+                'Fashion Store',
+                style: TextStyle(
+                  fontSize: 22.w,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),

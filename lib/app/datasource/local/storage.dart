@@ -1,27 +1,29 @@
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../constants/storage_constants.dart';
 class Storage{
-  static Future<void> setToken(String key, String value) async {
+  static Future<void> setToken(String value) async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.setString(key, value);
+    prefs.setString(StorageConstants.token, value);
   }
-  static Future<String?> getToken(String key) async {
+  static Future<String?> getToken() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(key);
+    return prefs.getString(StorageConstants.token);
   }
-  static Future<void> setPhone(String key, String value) async {
+  static Future<void> setPhone(String value) async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.setString(key, value);
+    prefs.setString(StorageConstants.phone, value);
   }
-  static Future<String?> getPhone(String key) async {
+  static Future<String?> getPhone() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(key);
+    return prefs.getString(StorageConstants.phone);
   }
-  static Future<void> setIsFirstTime(String key, bool value) async {
+  static Future<void> setIsFirstTime(bool value) async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.setBool(key, value);
+    prefs.setBool(StorageConstants.isFirstTime, value);
   }
-  static Future<String?> getIsFirstTime(String key) async {
+  static Future<bool?> getIsFirstTime() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(key);
+    return prefs.getBool(StorageConstants.isFirstTime);
   }
 }

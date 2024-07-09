@@ -5,9 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../constants/text_style.dart';
 import '../../routes/app_routes.dart';
 
-class WelcomeView extends StatelessWidget {
+class WelcomeView extends StatefulWidget {
   const WelcomeView({super.key});
 
+  @override
+  State<WelcomeView> createState() => _WelcomeViewState();
+}
+
+class _WelcomeViewState extends State<WelcomeView> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -150,7 +155,9 @@ class WelcomeView extends StatelessWidget {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.popAndPushNamed(context, AppRoutes.SIGNIN);
+                          },
                           child: Text(
                             'Login',
                             style: TextStyleConstant.lightLight26.copyWith(

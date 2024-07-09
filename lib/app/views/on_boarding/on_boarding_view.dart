@@ -34,7 +34,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               padding: EdgeInsets.zero,
               child: GestureDetector(
                 onTap: () {
-                  Navigator.popAndPushNamed(context, AppRoutes.WELCOME);
+                  Navigator.popAndPushNamed(context, AppRoutes.SIGNIN);
                 },
                 child: const Text('Skip'),
               ),
@@ -125,7 +125,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                         curve: Curves.easeIn,
                       );
                     } else {
-                      Navigator.popAndPushNamed(context, AppRoutes.WELCOME);
+                      Navigator.popAndPushNamed(context, AppRoutes.SIGNIN);
                     }
                   },
                 ),
