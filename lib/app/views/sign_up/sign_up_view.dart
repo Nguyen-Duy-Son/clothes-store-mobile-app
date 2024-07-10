@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../constants/assets.dart';
 import '../../constants/color_constants.dart';
 import '../../constants/text_style.dart';
 import '../../routes/app_routes.dart';
@@ -123,28 +124,31 @@ class _SignUpViewState extends State<SignUpView> {
                       borderSide: const BorderSide(
                           color: ColorConstants.neutralLight90),
                     ),
-                    suffixIcon: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          isPasswordVisible = !isPasswordVisible;
-                        });
-                      },
-                      child: isPasswordVisible
-                          ? Padding(
-                              padding: EdgeInsets.all(8.w),
-                              child: SvgPicture.asset(
-                                isPasswordVisible
-                                    ? 'assets/icons/eye-open.svg'
-                                    : 'assets/icons/eye-closed.svg',
-                              ),
-                            )
-                          : Padding(
-                              padding: EdgeInsets.all(8.w),
-                              child: SvgPicture.asset(
-                                'assets/icons/eye-closed.svg',
-                              ),
-                            ),
-                    ),
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isPasswordVisible = !isPasswordVisible;
+                          });
+                        },
+                        child: isPasswordVisible
+                            ? Padding(
+                          padding: EdgeInsets.all(8.w),
+                          child: SvgPicture.asset(
+                            isPasswordVisible
+                                ?
+                            // 'assets/icons/eye-open.svg'
+                            Assets.icons.eyeOpen
+                                : Assets.icons.eyeClosed,
+                            // 'assets/icons/eye-closed.svg',
+                          ),
+                        )
+                            : Padding(
+                          padding: EdgeInsets.all(8.w),
+                          child: SvgPicture.asset(
+                            Assets.icons.eyeClosed,
+                          ),
+                        ),
+                      )
                   ),
                 ),
                 Align(
@@ -231,15 +235,15 @@ class _SignUpViewState extends State<SignUpView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _iconButton('assets/icons/logo-apple.svg'),
+                    _iconButton(Assets.icons.logoApple),
                     SizedBox(
                       width: 16.w,
                     ),
-                    _iconButton('assets/icons/logo-goggle.svg'),
+                    _iconButton(Assets.icons.logoGoogle),
                     SizedBox(
                       width: 16.w,
                     ),
-                    _iconButton('assets/icons/logo-facebook.svg',
+                    _iconButton(Assets.icons.logoFacebook,
                         color: Colors.lightBlue),
                   ],
                 ),

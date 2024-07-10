@@ -26,4 +26,12 @@ class Storage{
     final prefs = await SharedPreferences.getInstance();
     return prefs.getBool(StorageConstants.isFirstTime);
   }
+  static Future<void> setLocation(String value) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(StorageConstants.location, value);
+  }
+  static Future<String?> getLocation() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(StorageConstants.location);
+  }
 }

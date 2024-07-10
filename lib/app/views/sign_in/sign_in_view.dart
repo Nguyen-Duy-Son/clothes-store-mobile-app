@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
+import '../../constants/assets.dart';
 import '../../constants/color_constants.dart';
 import '../../constants/text_style.dart';
+import '../../datasource/local/storage.dart';
 
 class SignInView extends StatefulWidget {
   const SignInView({super.key});
@@ -18,7 +21,17 @@ class _SignInViewState extends State<SignInView> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool isPasswordVisible = false;
-
+  void checkLocation() async {
+    String? location = await Storage.getLocation();
+    if (mounted) {
+      if(location == null) {
+        Navigator.pushNamed(context, AppRoutes.LOCATION);
+      }
+      else{
+        Navigator.pushNamed(context, AppRoutes.HOME);
+      }
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -31,18 +44,26 @@ class _SignInViewState extends State<SignInView> {
               children: <Widget>[
                 Text(
                   'Sign In',
-                  style: TextStyleConstant.lightLight42,
+                  style: GoogleFonts.dongle(
+                    color: ColorConstants.neutralLight120,
+                    fontSize: 42.sp,
+                  ),
                 ),
                 Text(
                   "Hi Wecome back, you're been missed",
-                  style: TextStyleConstant.lightLight22
-                      .copyWith(color: ColorConstants.neutralLight90),
+                  style: GoogleFonts.dongle(
+                    color: ColorConstants.neutralLight90,
+                    fontSize: 24.sp,
+                  ),
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "Email",
-                    style: TextStyleConstant.lightLight26,
+                    style: GoogleFonts.dongle(
+                      color: ColorConstants.neutralLight120,
+                      fontSize: 26.sp,
+                    ),
                   ),
                 ),
                 TextFormField(
@@ -67,7 +88,10 @@ class _SignInViewState extends State<SignInView> {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "Password",
-                    style: TextStyleConstant.lightLight26,
+                    style: GoogleFonts.dongle(
+                      color: ColorConstants.neutralLight120,
+                      fontSize: 26.sp,
+                    ),
                   ),
                 ),
                 TextFormField(
@@ -97,14 +121,17 @@ class _SignInViewState extends State<SignInView> {
                               padding: EdgeInsets.all(8.w),
                               child: SvgPicture.asset(
                                 isPasswordVisible
-                                    ? 'assets/icons/eye-open.svg'
-                                    : 'assets/icons/eye-closed.svg',
+                                    ?
+                                    // 'assets/icons/eye-open.svg'
+                                    Assets.icons.eyeOpen
+                                    : Assets.icons.eyeClosed,
+                                // 'assets/icons/eye-closed.svg',
                               ),
                             )
                           : Padding(
                               padding: EdgeInsets.all(8.w),
                               child: SvgPicture.asset(
-                                'assets/icons/eye-closed.svg',
+                                Assets.icons.eyeClosed,
                               ),
                             ),
                     ),
@@ -117,15 +144,16 @@ class _SignInViewState extends State<SignInView> {
                     onTap: () {},
                     child: Text(
                       'Forgot Password?',
-                      style: TextStyleConstant.lightLight24.copyWith(
+                      style: GoogleFonts.dongle(
                         color: ColorConstants.primaryLight110,
                         decoration: TextDecoration.underline,
+                        fontSize: 24.sp,
                       ),
                     ),
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () => checkLocation(),
                   child: Container(
                     alignment: Alignment.center,
                     padding: EdgeInsets.only(
@@ -142,8 +170,10 @@ class _SignInViewState extends State<SignInView> {
                     ),
                     child: Text(
                       "Sign In",
-                      style: TextStyleConstant.regularDark24.copyWith(
+                      style: GoogleFonts.dongle(
                         color: ColorConstants.primaryLight10,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 24.sp,
                       ),
                     ),
                   ),
@@ -158,8 +188,9 @@ class _SignInViewState extends State<SignInView> {
                     ),
                     Text(
                       'Or sign in with',
-                      style: TextStyleConstant.lightLight24.copyWith(
+                      style: GoogleFonts.dongle(
                         color: ColorConstants.neutralLight90,
+                        fontSize: 22.sp,
                       ),
                     ),
                     Container(
@@ -173,15 +204,15 @@ class _SignInViewState extends State<SignInView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _iconButton('assets/icons/logo-apple.svg'),
+                    _iconButton(Assets.icons.logoApple),
                     SizedBox(
                       width: 16.w,
                     ),
-                    _iconButton('assets/icons/logo-goggle.svg'),
+                    _iconButton(Assets.icons.logoGoogle),
                     SizedBox(
                       width: 16.w,
                     ),
-                    _iconButton('assets/icons/logo-facebook.svg',
+                    _iconButton(Assets.icons.logoFacebook,
                         color: Colors.lightBlue),
                   ],
                 ),

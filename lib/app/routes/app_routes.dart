@@ -6,4 +6,6 @@ abstract class AppRoutes {
   static String SIGNIN = '/sign-in';
   static String SIGNUP = '/sign-up';
   static String HOME = '/home';
+  static String LOCATION = '/location';
+  static String ENTERLOCATION = '/enter-location';
 }

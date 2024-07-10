@@ -3,6 +3,8 @@ import 'package:clothes_store_mobile_app/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../constants/assets.dart';
+
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
@@ -46,7 +48,7 @@ class _SplashViewState extends State<SplashView> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(50),
                 child: Image.asset(
-                  'assets/images/logo-shop.jpg',
+                  Assets.images.logoShop,
                   width: 36.w,
                   height: 36.w,
                   fit: BoxFit.cover,

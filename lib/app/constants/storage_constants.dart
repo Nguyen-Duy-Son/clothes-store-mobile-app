@@ -4,4 +4,5 @@ abstract class StorageConstants {
   static const String token = 'token';
   static const String isFirstTime = 'is_first_time';
   static const String phone = 'phone';
+  static const String location = 'location';
 }

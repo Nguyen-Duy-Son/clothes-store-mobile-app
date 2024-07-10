@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../constants/assets.dart';
 import '../../constants/color_constants.dart';
 import '../../constants/text_style.dart';
 
@@ -51,15 +52,15 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           children: [
             PageBoarding(
               title: TitleFirstOnBoarding(context),
-              imageUrl: 'assets/images/on_boarding-1.jpg',
+              imageUrl: Assets.images.onBoarding1,
             ),
             PageBoarding(
               title: TitleSecondOnBoarding(context),
-              imageUrl: 'assets/images/on_boarding-2.jpg',
+              imageUrl:  Assets.images.onBoarding1,
             ),
             PageBoarding(
               title: TitleThirdOnBoarding(context),
-              imageUrl: 'assets/images/on_boarding-3.jpg',
+              imageUrl:  Assets.images.onBoarding3,
             )
           ],
         ),
@@ -95,7 +96,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                       ),
                     ),
                     child: SvgPicture.asset(
-                      'assets/icons/arrow-left.svg',
+                      // 'assets/icons/arrow-left.svg',
+                      Assets.icons.arrowLeft,
                       width: 32.w,
                       height: 32.w,
                       color: ColorConstants.primaryLight120,
@@ -112,7 +114,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                       borderRadius: BorderRadius.circular(100),
                     ),
                     child: SvgPicture.asset(
-                      'assets/icons/arrow-right.svg',
+                      // 'assets/icons/arrow-right.svg',
+                      Assets.icons.arrowRight,
                       width: 32.w,
                       height: 32.w,
                       color: ColorConstants.primaryLight10,
@@ -182,7 +185,8 @@ class _PageBoardingState extends State<PageBoarding> {
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.visible,
                     style: TextStyleConstant.regularDark20.copyWith(
-                        color: ColorConstants.neutralLight90, height: 0.7),
+                        color: ColorConstants.neutralLight90, height: 0.7,
+                    ),
                   ),
                 ),
               ],
