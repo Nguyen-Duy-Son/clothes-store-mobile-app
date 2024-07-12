@@ -1,0 +1,35 @@
+{
+    "titleWelcome":"Chào Mừng Đến Với",
+    "fashionApp":"Ứng Dụng Thời Trang",
+    "descriptionWelcome":"Chào mừng đến với ứng dụng thời trang – nơi bạn tìm thấy phong cách hoàn hảo và xu hướng mới nhất cho mọi dịp",
+    "letsGetStarted":"Bắt Đầu Ngay",
+    "alreadyHaveAnAccount":"Đã có tài khoản?",
+    "signIn":"Đăng Nhập",
+
+    "clothing":"Quần Áo",
+    "where":"Nơi",
+    "begin":"Bắt Đầu",
+    "fashionDream":"Giấc Mơ Thời Trang",
+    "style":"Thời Trang",
+    "thatSuits":"Phù Hợp Với",
+    "everyOne":"Mọi Người",
+    "clothes" : "Quần Áo ",
+    "defineYourStyle":"Xác Định Phong Cách Của Bạn",
+
+    "dontHaveAnAccount":"Chưa có tài khoản?",
+    "signUp":"Đăng Ký",
+    "orSignInWith":"hoặc đăng nhập với",
+    "email":"Email",
+    "password":"Mật Khẩu",
+    "forgotPassword":"Quên Mật Khẩu?",
+    "titleSignIn":"Vui lòng đăng nhập để tiếp tục",
+
+    "createAccount":"Tạo Tài Khoản",
+    "name":"Tên",
+    "confirmPassword":"Xác Nhận Mật Khẩu",
+    "agreeTo":"Đồng ý với",
+    "theTerms":"các điều khoản",
+    "alreadyHaveAnAccount":"Đã có tài khoản?",
+    "orSignUpWith":"hoặc đăng ký với",
+    "titleSignUp":"Điền thông tin của bạn bên dưới hoặc đăng ký với phương tiện truyền thông xã hội"
+}

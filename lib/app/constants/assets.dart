@@ -18,6 +18,7 @@ class _AssetsIcons {
   final map = 'assets/icons/map.svg';
   final roundArrowLeft = 'assets/icons/round-arrow-left.svg';
   final roundArrowRight = 'assets/icons/round-arrow-right.svg';
+  final bell = 'assets/icons/bell.svg';
 }
 
 class _AssetsImages {
@@ -29,4 +30,5 @@ class _AssetsImages {
   final onBoarding1 = 'assets/images/on-boarding-1.jpg';
   final onBoarding2 = 'assets/images/on-boarding-2.jpg';
   final onBoarding3 = 'assets/images/on-boarding-3.jpg';
+
 }

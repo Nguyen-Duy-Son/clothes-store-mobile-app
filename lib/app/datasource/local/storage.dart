@@ -34,4 +34,12 @@ class Storage{
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString(StorageConstants.location);
   }
+  static Future<void> setLocaleLocal(String value) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(StorageConstants.localeLocal, value);
+  }
+  static Future<String?> getLocaleLocal() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(StorageConstants.localeLocal);
+  }
 }

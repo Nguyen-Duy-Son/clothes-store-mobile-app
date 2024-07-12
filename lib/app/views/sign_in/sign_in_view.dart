@@ -9,6 +9,8 @@ import '../../constants/assets.dart';
 import '../../constants/color_constants.dart';
 import '../../constants/text_style.dart';
 import '../../datasource/local/storage.dart';
+import '../../l10n/l10n.dart';
+import '../sign_up/verify_code_view.dart';
 
 class SignInView extends StatefulWidget {
   const SignInView({super.key});
@@ -21,17 +23,20 @@ class _SignInViewState extends State<SignInView> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool isPasswordVisible = false;
+
   void checkLocation() async {
     String? location = await Storage.getLocation();
     if (mounted) {
-      if(location == null) {
+      if (location == null) {
         Navigator.pushNamed(context, AppRoutes.LOCATION);
-      }
-      else{
+      } else {
         Navigator.pushNamed(context, AppRoutes.HOME);
       }
     }
   }
+
+  bool _value = false;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -43,14 +48,14 @@ class _SignInViewState extends State<SignInView> {
             child: Column(
               children: <Widget>[
                 Text(
-                  'Sign In',
+                  S.of(context).signIn,
                   style: GoogleFonts.dongle(
                     color: ColorConstants.neutralLight120,
                     fontSize: 42.sp,
                   ),
                 ),
                 Text(
-                  "Hi Wecome back, you're been missed",
+                  S.of(context).titleSignIn,
                   style: GoogleFonts.dongle(
                     color: ColorConstants.neutralLight90,
                     fontSize: 24.sp,
@@ -59,7 +64,7 @@ class _SignInViewState extends State<SignInView> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Email",
+                    S.of(context).email,
                     style: GoogleFonts.dongle(
                       color: ColorConstants.neutralLight120,
                       fontSize: 26.sp,
@@ -87,7 +92,7 @@ class _SignInViewState extends State<SignInView> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Password",
+                    S.of(context).password,
                     style: GoogleFonts.dongle(
                       color: ColorConstants.neutralLight120,
                       fontSize: 26.sp,
@@ -141,9 +146,16 @@ class _SignInViewState extends State<SignInView> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => VerifyCodeView(
+                                email: _emailController.text,
+                              )));
+                    },
                     child: Text(
-                      'Forgot Password?',
+                      S.of(context).forgotPassword,
                       style: GoogleFonts.dongle(
                         color: ColorConstants.primaryLight110,
                         decoration: TextDecoration.underline,
@@ -169,7 +181,7 @@ class _SignInViewState extends State<SignInView> {
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Text(
-                      "Sign In",
+                      S.of(context).signIn,
                       style: GoogleFonts.dongle(
                         color: ColorConstants.primaryLight10,
                         fontWeight: FontWeight.w500,
@@ -183,19 +195,21 @@ class _SignInViewState extends State<SignInView> {
                   children: [
                     Container(
                       height: 1.h,
-                      width: 80.w,
+                      width: 60.w,
                       color: ColorConstants.neutralLight90,
                     ),
+                    SizedBox(width: 8.w), // Add this line
                     Text(
-                      'Or sign in with',
+                      S.of(context).orSignInWith,
                       style: GoogleFonts.dongle(
                         color: ColorConstants.neutralLight90,
                         fontSize: 22.sp,
                       ),
                     ),
+                    SizedBox(width: 8.w), // Add this line
                     Container(
                       height: 1.h,
-                      width: 80.w,
+                      width: 60.w,
                       color: ColorConstants.neutralLight90,
                     ),
                   ],
@@ -206,11 +220,11 @@ class _SignInViewState extends State<SignInView> {
                   children: [
                     _iconButton(Assets.icons.logoApple),
                     SizedBox(
-                      width: 16.w,
+                      width: 20.w,
                     ),
                     _iconButton(Assets.icons.logoGoogle),
                     SizedBox(
-                      width: 16.w,
+                      width: 20.w,
                     ),
                     _iconButton(Assets.icons.logoFacebook,
                         color: Colors.lightBlue),
@@ -220,10 +234,12 @@ class _SignInViewState extends State<SignInView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Don't have an account?",
-                        style: TextStyleConstant.lightLight24.copyWith(
-                          color: ColorConstants.neutralLight120,
-                        )),
+                    Text(
+                      S.of(context).dontHaveAnAccount,
+                      style: TextStyleConstant.lightLight24.copyWith(
+                        color: ColorConstants.neutralLight120,
+                      ),
+                    ),
                     SizedBox(
                       width: 8.w,
                     ),
@@ -232,7 +248,7 @@ class _SignInViewState extends State<SignInView> {
                         Navigator.pushNamed(context, AppRoutes.SIGNUP);
                       },
                       child: Text(
-                        'Sign Up',
+                        S.of(context).signUp,
                         style: TextStyleConstant.lightLight24.copyWith(
                           color: ColorConstants.primaryLight110,
                           decoration: TextDecoration.underline,
@@ -251,7 +267,7 @@ class _SignInViewState extends State<SignInView> {
 
   Widget _iconButton(String path, {Color? color}) {
     return Container(
-      padding: EdgeInsets.all(10.w),
+      padding: EdgeInsets.all(12.w),
       decoration: BoxDecoration(
         color: ColorConstants.neutralLight10,
         borderRadius: BorderRadius.circular(200),

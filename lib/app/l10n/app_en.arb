@@ -1,0 +1,34 @@
+{
+    "titleWelcome":"Welcome To The",
+    "fashionApp":"Fashion App",
+    "descriptionWelcome":"Welcome to the fashion app – where you find the perfect style and the latest trends for every occasion.",
+    "letsGetStarted":"Let's Get Started",
+    "alreadyHaveAnAccount":"Already have an account?",
+    "signIn":"Sign In",
+
+    "where":"Where",
+    "begin" : "Begin",
+    "fashionDream":"Fashion Dream",
+    "style":"Style",
+    "thatSuits":"That Suits",
+    "everyOne":"Everyone",
+    "clothes":"Clothes ",
+    "defineYourStyle":"Define Your Style",
+
+    "dontHaveAnAccount":"Don't have an account?",
+    "signUp":"Sign Up",
+    "orSignInWith":"or sign in with",
+    "email":"Email",
+    "password":"Password",
+    "forgotPassword":"Forgot Password?",
+    "titleSignIn":"Please sign in to continue",
+
+    "createAccount":"Create Account",
+    "name":"Name",
+    "confirmPassword":"Confirm Password",
+    "agreeTo":"Agree to",
+    "theTerms":"the terms",
+    "alreadyHaveAnAccount":"Already have an account?",
+    "orSignUpWith":"or sign up with",
+    "titleSignUp":"Fill your information below or sign up with social media"
+}

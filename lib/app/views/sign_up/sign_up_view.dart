@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../constants/assets.dart';
 import '../../constants/color_constants.dart';
 import '../../constants/text_style.dart';
+import '../../l10n/l10n.dart';
 import '../../routes/app_routes.dart';
 
 class SignUpView extends StatefulWidget {
@@ -20,8 +21,11 @@ class _SignUpViewState extends State<SignUpView> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   bool isPasswordVisible = false;
   bool checkBoxValue = false;
+  bool isConfirmPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -30,17 +34,17 @@ class _SignUpViewState extends State<SignUpView> {
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
-            margin: EdgeInsets.only(top: 40.h),
+            margin: EdgeInsets.only(top: 24.h),
             child: Column(
               children: <Widget>[
                 Text(
-                  'Create Account',
+                  S.of(context).createAccount,
                   style: TextStyleConstant.lightLight42.copyWith(
                     height: 0.9,
                   ),
                 ),
                 Text(
-                  "Fill your information below or register your social account",
+                  S.of(context).titleSignUp,
                   style: TextStyleConstant.lightLight22.copyWith(
                       color: ColorConstants.neutralLight90, height: 0.9),
                   textAlign: TextAlign.center,
@@ -48,10 +52,8 @@ class _SignUpViewState extends State<SignUpView> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Name",
-                    style: TextStyleConstant.lightLight26.copyWith(
-                      height: 0.9,
-                    ),
+                    S.of(context).name,
+                    style: TextStyleConstant.lightLight26.copyWith(),
                   ),
                 ),
                 TextFormField(
@@ -75,10 +77,8 @@ class _SignUpViewState extends State<SignUpView> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Email",
-                    style: TextStyleConstant.lightLight26.copyWith(
-                      height: 0.9,
-                    ),
+                    S.of(context).email,
+                    style: TextStyleConstant.lightLight26.copyWith(),
                   ),
                 ),
                 TextFormField(
@@ -102,28 +102,26 @@ class _SignUpViewState extends State<SignUpView> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Password",
-                    style: TextStyleConstant.lightLight26.copyWith(
-                      height: 0.9,
-                    ),
+                    S.of(context).password,
+                    style: TextStyleConstant.lightLight26.copyWith(),
                   ),
                 ),
                 TextFormField(
                   controller: _passwordController,
                   obscureText: !isPasswordVisible,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(horizontal: 20.w),
-                    hintText: '********',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50),
-                      borderSide: const BorderSide(
-                          color: ColorConstants.neutralLight90),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50),
-                      borderSide: const BorderSide(
-                          color: ColorConstants.neutralLight90),
-                    ),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 20.w),
+                      hintText: '********',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: const BorderSide(
+                            color: ColorConstants.neutralLight90),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: const BorderSide(
+                            color: ColorConstants.neutralLight90),
+                      ),
                       suffixIcon: GestureDetector(
                         onTap: () {
                           setState(() {
@@ -132,25 +130,76 @@ class _SignUpViewState extends State<SignUpView> {
                         },
                         child: isPasswordVisible
                             ? Padding(
-                          padding: EdgeInsets.all(8.w),
-                          child: SvgPicture.asset(
-                            isPasswordVisible
-                                ?
-                            // 'assets/icons/eye-open.svg'
-                            Assets.icons.eyeOpen
-                                : Assets.icons.eyeClosed,
-                            // 'assets/icons/eye-closed.svg',
-                          ),
-                        )
+                                padding: EdgeInsets.all(8.w),
+                                child: SvgPicture.asset(
+                                  isPasswordVisible
+                                      ?
+                                      // 'assets/icons/eye-open.svg'
+                                      Assets.icons.eyeOpen
+                                      : Assets.icons.eyeClosed,
+                                  // 'assets/icons/eye-closed.svg',
+                                ),
+                              )
                             : Padding(
-                          padding: EdgeInsets.all(8.w),
-                          child: SvgPicture.asset(
-                            Assets.icons.eyeClosed,
-                          ),
-                        ),
-                      )
+                                padding: EdgeInsets.all(8.w),
+                                child: SvgPicture.asset(
+                                  Assets.icons.eyeClosed,
+                                ),
+                              ),
+                      )),
+                ),
+                SizedBox(height: 8.h),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    S.of(context).confirmPassword,
+                    style: TextStyleConstant.lightLight26.copyWith(),
                   ),
                 ),
+                TextFormField(
+                  controller: _confirmPasswordController,
+                  obscureText: !isConfirmPasswordVisible,
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(horizontal: 20.w),
+                      hintText: '********',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: const BorderSide(
+                            color: ColorConstants.neutralLight90),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: const BorderSide(
+                            color: ColorConstants.neutralLight90),
+                      ),
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isConfirmPasswordVisible =
+                                !isConfirmPasswordVisible;
+                          });
+                        },
+                        child: isConfirmPasswordVisible
+                            ? Padding(
+                                padding: EdgeInsets.all(8.w),
+                                child: SvgPicture.asset(
+                                  isConfirmPasswordVisible
+                                      ?
+                                      // 'assets/icons/eye-open.svg'
+                                      Assets.icons.eyeOpen
+                                      : Assets.icons.eyeClosed,
+                                  // 'assets/icons/eye-closed.svg',
+                                ),
+                              )
+                            : Padding(
+                                padding: EdgeInsets.all(8.w),
+                                child: SvgPicture.asset(
+                                  Assets.icons.eyeClosed,
+                                ),
+                              ),
+                      )),
+                ),
+                SizedBox(height: 8.h),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Row(
@@ -163,18 +212,20 @@ class _SignUpViewState extends State<SignUpView> {
                                 checkBoxValue = !checkBoxValue;
                               });
                             }),
-                        Text("Agree with",
-                            style: TextStyleConstant.lightLight24.copyWith(
-                              color: ColorConstants.neutralLight120,
-                            )),
+                        Text(
+                          S.of(context).agreeTo,
+                          style: TextStyleConstant.lightLight22.copyWith(
+                            color: ColorConstants.neutralLight120,
+                          ),
+                        ),
                         SizedBox(
                           width: 4.w,
                         ),
                         GestureDetector(
                           onTap: () {},
                           child: Text(
-                            'Terms & Condition',
-                            style: TextStyleConstant.lightLight24.copyWith(
+                            S.of(context).theTerms,
+                            style: TextStyleConstant.lightLight22.copyWith(
                               color: ColorConstants.primaryLight110,
                               decoration: TextDecoration.underline,
                             ),
@@ -185,9 +236,7 @@ class _SignUpViewState extends State<SignUpView> {
                 GestureDetector(
                   onTap: () {
                     // Navigator.pushNamed(context, AppRoutes.VERIFYCODE);
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => VerifyCodeView(email: _emailController.text,))
-                    );
+
                   },
                   child: Container(
                     alignment: Alignment.center,
@@ -203,7 +252,7 @@ class _SignUpViewState extends State<SignUpView> {
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Text(
-                      "Sign Up",
+                      S.of(context).signUp,
                       style: TextStyleConstant.regularDark24.copyWith(
                         color: ColorConstants.primaryLight10,
                       ),
@@ -215,14 +264,20 @@ class _SignUpViewState extends State<SignUpView> {
                   children: [
                     Container(
                       height: 1.h,
-                      width: 80.w,
+                      width: 60.w,
                       color: ColorConstants.neutralLight90,
                     ),
+                    SizedBox(
+                      width: 8.w,
+                    ),
                     Text(
-                      'Or sign in with',
+                      S.of(context).orSignUpWith,
                       style: TextStyleConstant.lightLight24.copyWith(
                         color: ColorConstants.neutralLight90,
                       ),
+                    ),
+                    SizedBox(
+                      width: 8.w,
                     ),
                     Container(
                       height: 1.h,
@@ -237,11 +292,11 @@ class _SignUpViewState extends State<SignUpView> {
                   children: [
                     _iconButton(Assets.icons.logoApple),
                     SizedBox(
-                      width: 16.w,
+                      width: 20.w,
                     ),
                     _iconButton(Assets.icons.logoGoogle),
                     SizedBox(
-                      width: 16.w,
+                      width: 20.w,
                     ),
                     _iconButton(Assets.icons.logoFacebook,
                         color: Colors.lightBlue),
@@ -251,10 +306,12 @@ class _SignUpViewState extends State<SignUpView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Already have an account?",
-                        style: TextStyleConstant.lightLight24.copyWith(
-                          color: ColorConstants.neutralLight120,
-                        )),
+                    Text(
+                      S.of(context).alreadyHaveAnAccount,
+                      style: TextStyleConstant.lightLight24.copyWith(
+                        color: ColorConstants.neutralLight120,
+                      ),
+                    ),
                     SizedBox(
                       width: 8.w,
                     ),
@@ -263,7 +320,7 @@ class _SignUpViewState extends State<SignUpView> {
                         Navigator.popAndPushNamed(context, AppRoutes.SIGNIN);
                       },
                       child: Text(
-                        'Sign In',
+                        S.of(context).signIn,
                         style: TextStyleConstant.lightLight24.copyWith(
                           color: ColorConstants.primaryLight110,
                           decoration: TextDecoration.underline,

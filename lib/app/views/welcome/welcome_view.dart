@@ -1,4 +1,5 @@
 import 'package:clothes_store_mobile_app/app/constants/color_constants.dart';
+import 'package:clothes_store_mobile_app/app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,7 +23,7 @@ class _WelcomeViewState extends State<WelcomeView> {
         body: Center(
           child: Container(
             width: 1.sw,
-            margin: EdgeInsets.only(left: 12.w, right: 12.w, top: 26.h),
+            margin: EdgeInsets.only(left: 12.w, right: 12.w, top: 16.h),
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -81,7 +82,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                       softWrap: true,
                       overflow: TextOverflow.visible,
                       text: TextSpan(
-                        text: 'The ',
+                        text: "${S.of(context).titleWelcome} ",
                         style: GoogleFonts.dongle(
                           color: ColorConstants.neutralLight120,
                           fontWeight: FontWeight.w500,
@@ -90,19 +91,11 @@ class _WelcomeViewState extends State<WelcomeView> {
                         ),
                         children: <TextSpan>[
                           TextSpan(
-                            text: 'Fashion App ',
+                            text: S.of(context).fashionApp,
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 42.sp,
                               color: ColorConstants.primaryLight110,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'That Makes You Look Your Best',
-                            style: GoogleFonts.dongle(
-                              color: ColorConstants.neutralLight120,
-                              fontSize: 42.sp,
-                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ],
@@ -110,13 +103,13 @@ class _WelcomeViewState extends State<WelcomeView> {
                     ),
                   ),
                   Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+                    S.of(context).descriptionWelcome,
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.visible,
                     style: GoogleFonts.dongle(
-                        color: ColorConstants.neutralLight90,
-                        fontSize: 22.sp,
-                        height: 1,
+                      color: ColorConstants.neutralLight90,
+                      fontSize: 22.sp,
+                      height: 1,
                     ),
                   ),
                   GestureDetector(
@@ -140,7 +133,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                         borderRadius: BorderRadius.circular(50),
                       ),
                       child: Text(
-                        "Let's Get Started",
+                        S.of(context).letsGetStarted,
                         style: GoogleFonts.dongle(
                           color: ColorConstants.primaryLight10,
                           fontWeight: FontWeight.w500,
@@ -154,7 +147,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        "Already have an account?",
+                        S.of(context).alreadyHaveAnAccount,
                         style: GoogleFonts.dongle(
                           color: ColorConstants.neutralLight120,
                           fontWeight: FontWeight.w500,
@@ -166,11 +159,10 @@ class _WelcomeViewState extends State<WelcomeView> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.popAndPushNamed(
-                              context, AppRoutes.SIGNIN);
+                          Navigator.popAndPushNamed(context, AppRoutes.SIGNIN);
                         },
                         child: Text(
-                          'Login',
+                          S.of(context).signIn,
                           style: GoogleFonts.dongle(
                             color: ColorConstants.primaryLight110,
                             decoration: TextDecoration.underline,

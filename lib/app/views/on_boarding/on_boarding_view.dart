@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../constants/assets.dart';
 import '../../constants/color_constants.dart';
 import '../../constants/text_style.dart';
+import '../../l10n/l10n.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
@@ -205,17 +206,23 @@ Widget TitleFirstOnBoarding(BuildContext context) {
       softWrap: true,
       overflow: TextOverflow.visible,
       text: TextSpan(
-        text: 'Samples ',
+        text: "${S.of(context).style} ",
         style: TextStyleConstant.regularLight42.copyWith(
           color: ColorConstants.primaryLight110,
           height: 0.7,
         ),
         children: <TextSpan>[
           TextSpan(
-            text: 'Shopping Experience',
+            text: "${S.of(context).thatSuits} ",
             style: TextStyleConstant.regularLight42.copyWith(
                 // color: ColorConstants.primaryLight110,
                 ),
+          ),
+          TextSpan(
+            text: "${S.of(context).everyOne}",
+            style: TextStyleConstant.regularLight42.copyWith(
+              // color: ColorConstants.primaryLight110,
+            ),
           ),
         ],
       ),
@@ -230,24 +237,24 @@ Widget TitleSecondOnBoarding(BuildContext context) {
       softWrap: true,
       overflow: TextOverflow.visible,
       text: TextSpan(
-        text: 'Wishlist: Where ',
+        text: "${S.of(context).where} ",
         style: TextStyleConstant.regularLight42.copyWith(
           // color: ColorConstants.primaryLight110,
-          height: 0.7,
+          height: 0.8
         ),
         children: <TextSpan>[
           TextSpan(
-            text: 'Fashion Dreams ',
+            text: "${S.of(context).fashionDream} ",
             style: TextStyleConstant.regularLight42.copyWith(
               color: ColorConstants.primaryLight110,
             ),
           ),
           TextSpan(
-            text: 'Begin',
+            text: S.of(context).begin,
             style: TextStyleConstant.regularLight42.copyWith(
                 // color: ColorConstants.primaryLight110,
                 ),
-          ),
+            ),
         ],
       ),
     ),
@@ -266,26 +273,14 @@ Widget TitleThirdOnBoarding(BuildContext context) {
         softWrap: true,
         overflow: TextOverflow.visible,
         text: TextSpan(
-          text: 'Swift ',
+          text: S.of(context).clothes,
           style: TextStyleConstant.regularLight42.copyWith(
             color: ColorConstants.primaryLight110,
             height: 0.7,
           ),
           children: <TextSpan>[
             TextSpan(
-              text: 'and ',
-              style: TextStyleConstant.regularLight42.copyWith(
-                  // color: ColorConstants.primaryLight110,
-                  ),
-            ),
-            TextSpan(
-              text: 'Reliable ',
-              style: TextStyleConstant.regularLight42.copyWith(
-                  // color: ColorConstants.primaryLight110,
-                  ),
-            ),
-            TextSpan(
-              text: 'Delivery',
+              text: S.of(context).defineYourStyle,
               style: TextStyleConstant.regularLight42.copyWith(
                   // color: ColorConstants.primaryLight110,
                   ),
