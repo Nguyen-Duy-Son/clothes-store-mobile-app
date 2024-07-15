@@ -30,5 +30,8 @@
     "theTerms":"the terms",
     "alreadyHaveAnAccount":"Already have an account?",
     "orSignUpWith":"or sign up with",
-    "titleSignUp":"Fill your information below or sign up with social media"
+    "titleSignUp":"Fill your information below or sign up with social media",
+
+    "location":"Location",
+    "search":"Search"
 }

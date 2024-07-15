@@ -31,5 +31,8 @@
     "theTerms":"các điều khoản",
     "alreadyHaveAnAccount":"Đã có tài khoản?",
     "orSignUpWith":"hoặc đăng ký với",
-    "titleSignUp":"Điền thông tin của bạn bên dưới hoặc đăng ký với phương tiện truyền thông xã hội"
+    "titleSignUp":"Điền thông tin của bạn bên dưới hoặc đăng ký với phương tiện truyền thông xã hội",
+
+    "location":"Vị trí",
+    "search":"Tìm kiếm"
 }

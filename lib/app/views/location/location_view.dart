@@ -45,8 +45,7 @@ class _LocationViewState extends State<LocationView> {
           locationData.latitude!, locationData.longitude!);
       Placemark place = placemarks[0];
       String address = '${place.street}, ${place.subAdministrativeArea}, ${place.administrativeArea}, ${place.country}';
-      Storage.setLocation(address);
-      // print(address);
+      await Storage.setLocation(address);
       Navigator.popAndPushNamed(context, AppRoutes.HOME);
     } else {
       print('Unable to get location data.');

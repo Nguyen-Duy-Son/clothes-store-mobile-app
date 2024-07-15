@@ -19,6 +19,8 @@ class _AssetsIcons {
   final roundArrowLeft = 'assets/icons/round-arrow-left.svg';
   final roundArrowRight = 'assets/icons/round-arrow-right.svg';
   final bell = 'assets/icons/bell.svg';
+  final downArrow = 'assets/icons/down.svg';
+  final search = 'assets/icons/search.svg';
 }
 
 class _AssetsImages {
