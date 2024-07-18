@@ -34,5 +34,9 @@
     "titleSignUp":"Điền thông tin của bạn bên dưới hoặc đăng ký với phương tiện truyền thông xã hội",
 
     "location":"Vị trí",
-    "search":"Tìm kiếm"
+    "search":"Tìm kiếm",
+    "category":"Loại",
+    "seeAll":"Xem tất cả",
+    "flashSale":"Giảm Giá",
+    "closingIn":"Kết thúc trong"
 }

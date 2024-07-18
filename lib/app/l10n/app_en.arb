@@ -33,5 +33,9 @@
     "titleSignUp":"Fill your information below or sign up with social media",
 
     "location":"Location",
-    "search":"Search"
+    "search":"Search",
+    "category":"Category",
+    "seeAll":"See All",
+    "flashSale":"Flash Sale",
+    "closingIn":"Closing in"
 }

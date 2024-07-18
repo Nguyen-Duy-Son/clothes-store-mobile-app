@@ -8,4 +8,5 @@ abstract class AppRoutes {
   static String HOME = '/home';
   static String LOCATION = '/location';
   static String ENTERLOCATION = '/enter-location';
+  static String CARD = '/card';
 }
