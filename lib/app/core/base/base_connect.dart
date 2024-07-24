@@ -88,16 +88,16 @@ class BaseConnect {
     try {
       switch (method) {
         case RequestMethod.POST:
-          response = await http.post(uri, body: requestBody);
+          response = await http.post(uri, body: requestBody, headers: request.headers);
           break;
         case RequestMethod.PUT:
-          response = await http.put(uri, body: requestBody);
+          response = await http.put(uri, body: requestBody, headers: request.headers);
           break;
         case RequestMethod.GET:
           response = await http.get(uri, headers: request.headers);
           break;
         case RequestMethod.DELETE:
-          response = await http.delete(uri, headers: request.headers);
+          response = await http.delete(uri, headers: request.headers, body: requestBody);
           break;
         default:
           throw Exception('Unsupported request method');

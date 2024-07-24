@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:clothes_store_mobile_app/app/cubits/home/home_cubit.dart';
 import 'package:clothes_store_mobile_app/app/cubits/home/home_state.dart';
+import 'package:clothes_store_mobile_app/app/views/home/components/category/detail_category_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,6 +13,8 @@ import '../../../constants/color_constants.dart';
 import '../../../constants/text_style.dart';
 import '../../../l10n/l10n.dart';
 import '../../../models/product_model.dart';
+import '../../product/detail_product_view.dart';
+import '../../product/product_widget.dart';
 
 class FlashSaleWidget extends StatefulWidget {
   const FlashSaleWidget({super.key});
@@ -149,56 +152,6 @@ class _FlashSaleWidgetState extends State<FlashSaleWidget> {
       ],
     );
   }
-
-  // Widget buildProductWidget(Product e) {
-  //   return Column(
-  //     crossAxisAlignment: CrossAxisAlignment.stretch,
-  //     children: [
-  //       ClipRRect(
-  //         borderRadius: BorderRadius.circular(8.w),
-  //         child: Image.network(
-  //           e.image,
-  //           fit: BoxFit.cover,
-  //         ),
-  //       ),
-  //       Row(
-  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //         children: [
-  //           Text(
-  //             e.name,
-  //             style: TextStyleConstant.lightLight24.copyWith(
-  //               color: ColorConstants.neutralLight120,
-  //             ),
-  //           ),
-  //          Row(
-  //            children:[
-  //              Padding(
-  //                padding: EdgeInsets.only(bottom: 4.h, right: 4.w),
-  //                child: SvgPicture.asset(
-  //                  Assets.icons.star,
-  //                  width: 12.w,
-  //                  height: 12.h,
-  //                ),
-  //              ),
-  //              Text(
-  //                double.parse(e.rating).toString(),
-  //                style: TextStyleConstant.lightLight24.copyWith(
-  //                  color: ColorConstants.neutralLight120,
-  //                ),
-  //              ),
-  //            ]
-  //          )
-  //         ],
-  //       ),
-  //       Text(
-  //         "\$${e.price}",
-  //         style: TextStyleConstant.regularLight24.copyWith(
-  //           color: ColorConstants.primaryLight110,
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
   Widget boxTime(String time) {
     return Container(
       width: 24.w,
@@ -213,114 +166,6 @@ class _FlashSaleWidgetState extends State<FlashSaleWidget> {
         style: TextStyleConstant.regularLight22.copyWith(
           color: ColorConstants.primaryLight110,
         ),
-      ),
-    );
-  }
-}
-class ProductWidget extends StatefulWidget {
-  const ProductWidget({super.key, required this.e});
-  final Product e;
-  @override
-  State<ProductWidget> createState() => _ProductWidgetState();
-}
-
-class _ProductWidgetState extends State<ProductWidget> {
-  bool isFavourite = false;
-  void toggleFavourite() {
-    setState(() {
-      isFavourite = !isFavourite;
-    });
-  }
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 20.h),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8.w),
-                child: Image.network(
-                  widget.e.image,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Positioned(
-                top: 4.h,
-                right: 4.w,
-                child: GestureDetector(
-                  child: Container(
-                    width: 30.w,
-                    height: 30.w,
-                    decoration: BoxDecoration(
-                      color: ColorConstants.neutralLight10,
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    alignment: Alignment.center,
-                    child: SvgPicture.asset(
-                      Assets.icons.heart,
-                      width: 16.w,
-                      height: 16.h,
-                      color: !isFavourite?ColorConstants.neutralLight70:ColorConstants.accentRed,
-                    ),
-                  ),
-                  onTap: ()=>toggleFavourite(),
-                ),
-              ),
-            ],
-          ),
-          Stack(
-              clipBehavior: Clip.none,
-              children:[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: 4.h),
-                        child: Text(
-                          widget.e.name,
-                          style: TextStyleConstant.lightLight24.copyWith(
-                            color: ColorConstants.neutralLight120,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ),
-                    Row(
-                        children:[
-                          Padding(
-                            padding: EdgeInsets.only(bottom: 4.h, right: 4.w),
-                            child: SvgPicture.asset(
-                              Assets.icons.star,
-                              width: 12.w,
-                              height: 12.h,
-                            ),
-                          ),
-                          Text(
-                            double.parse(widget.e.rating).toString(),
-                            style: TextStyleConstant.lightLight24.copyWith(
-                              color: ColorConstants.neutralLight120,
-                            ),
-                          ),
-                        ]
-                    )
-                  ],
-                ),
-                Positioned(
-                  top: 20.h,
-                  child: Text(
-                    "\$${widget.e.price.toDouble().toStringAsFixed(2)}",
-                    style: TextStyleConstant.regularLight30.copyWith(
-                      color: ColorConstants.neutralLight120,
-                    ),
-                  ),
-                ),
-              ]
-          ),
-        ],
       ),
     );
   }

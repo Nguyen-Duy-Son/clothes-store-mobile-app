@@ -38,5 +38,28 @@
     "category":"Loại",
     "seeAll":"Xem tất cả",
     "flashSale":"Giảm Giá",
-    "closingIn":"Kết thúc trong"
+    "closingIn":"Kết thúc trong",
+
+    "productDetail":"Chi Tiết Sản Phẩm",
+    "showLess":"Ẩn Bớt",
+    "showMore":"Xem Thêm",
+    "selectSize":"Chọn Kích Cỡ",
+    "selectColor":"Chọn Màu",
+    "addToCart":"Thêm vào giỏ hàng",
+    "quantity":"Số Lượng",
+    "totalPrice":"Tổng Tiền",
+    "addProductToCartSuccess":"Đã thêm vào giỏ hàng",
+
+    "myWishList":"Danh Sách Yêu Thích",
+
+    "myCart":"Giỏ Hàng",
+    "size":"Kích Cỡ",
+    "discountCode":"Mã Giảm Giá",
+    "enterCode":"Nhập mã",
+    "apply":"Áp Dụng",
+    "voucherApplied":"Mã đã được áp dụng",
+    "voucherNotApplied":"Mã không hợp lệ",
+    "pay":"Thanh Toán",
+    "proceedToCheckout":"Tiến Hành Thanh Toán",
+    "delete":"Xóa"
 }

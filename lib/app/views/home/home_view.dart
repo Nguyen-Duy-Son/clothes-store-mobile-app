@@ -1,6 +1,6 @@
 import 'package:clothes_store_mobile_app/app/cubits/home/home_cubit.dart';
 import 'package:clothes_store_mobile_app/app/datasource/local/storage.dart';
-import 'package:clothes_store_mobile_app/app/views/card/card_view.dart';
+import 'package:clothes_store_mobile_app/app/views/my_cart/cart_view.dart';
 import 'package:clothes_store_mobile_app/app/views/home/components/category/category_widget.dart';
 import 'package:clothes_store_mobile_app/app/views/home/components/flash_sale_widget.dart';
 import 'package:clothes_store_mobile_app/app/views/home/components/page_view_widget.dart';
@@ -13,6 +13,7 @@ import '../../constants/assets.dart';
 import '../../constants/color_constants.dart';
 import '../../constants/text_style.dart';
 import '../../l10n/l10n.dart';
+import '../wish_list/wish_list_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -31,9 +32,9 @@ class _HomeViewState extends State<HomeView>
   Future<void> _selectLocation() async {
     location = await Storage.getLocation() as String;
     if (mounted)
-      setState(() {}); // Update the UI if the widget is still in the tree
+      setState(() {});
   }
-
+  bool _hideBottomNavBar = false;
   int pageBody = 0;
 
   @override
@@ -54,10 +55,10 @@ class _HomeViewState extends State<HomeView>
     Assets.icons.person,
   ];
   List<Widget> _bodyView = <Widget>[
-    CardView(),
-    CardView(),
-    CardView(),
-    CardView(),
+    CartView(),
+    WishListView(),
+    CartView(),
+    CartView(),
   ];
 
   @override
@@ -83,6 +84,7 @@ class _HomeViewState extends State<HomeView>
                     onTap: (x) {
                       setState(() {
                         pageBody = x;
+
                       });
                     },
                     indicator: const UnderlineTabIndicator(

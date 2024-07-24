@@ -9,6 +9,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'app/cubits/home/home_cubit.dart';
+import 'app/cubits/my_card/my_card_cubit.dart';
+import 'app/cubits/sign_in/sign_in_cubit.dart';
 import 'app/routes/app_pages.dart';
 import 'app/routes/app_routes.dart';
 
@@ -25,6 +27,9 @@ void main() {
         BlocProvider(
           create: (_) => ProductByCategoryCubit(),
         ),
+        BlocProvider(create: (_)=>SignInCubit()),
+
+        BlocProvider(create: (_)=>MyCardCubit()),
       ],
       child: const MyApp(),
     ),

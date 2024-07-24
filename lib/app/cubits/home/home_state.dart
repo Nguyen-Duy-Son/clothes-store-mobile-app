@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 
 import '../../models/category_model.dart';
 import '../../models/product_model.dart';
+import '../../models/wish_list_model.dart';
 
 class HomeState extends Equatable {
   final List<Product> products;

@@ -28,6 +28,10 @@ class _AssetsIcons {
   final person = 'assets/icons/person.svg';
   final home = 'assets/icons/home.svg';
   final message = 'assets/icons/message.svg';
+  final remove = 'assets/icons/remove.svg';
+  final add = 'assets/icons/add.svg';
+  final trashCan = 'assets/icons/trash-can.svg';
+  final check = 'assets/icons/check.svg';
 }
 
 class _AssetsImages {

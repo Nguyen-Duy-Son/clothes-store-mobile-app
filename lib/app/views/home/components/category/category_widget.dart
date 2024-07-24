@@ -28,6 +28,7 @@ class _CategoryWidgetState extends State<CategoryWidget > {
             child: CircularProgressIndicator(),
           );
         } else if (state is HomeError) {
+          print(state.message);
           return Center(
             child: Text(state.message),
           );

@@ -37,5 +37,28 @@
     "category":"Category",
     "seeAll":"See All",
     "flashSale":"Flash Sale",
-    "closingIn":"Closing in"
+    "closingIn":"Closing in",
+
+    "productDetail":"Product Detail",
+    "showMore":"Show More",
+    "showLess":"Show Less",
+    "selectSize":"Select Size",
+    "selectColor":"Select Color",
+    "addToCart":"Add to Cart",
+    "quantity":"Quantity",
+    "totalPrice":"Total Price",
+    "addProductToCartSuccess":"Added to cart",
+
+    "myWishList":"My WishList",
+
+    "myCart":"My Cart",
+    "size":"Size",
+    "delete":"Delete",
+    "enterCode":"Enter code",
+    "apply":"Apply",
+    "voucherApplied":"Voucher applied",
+    "voucherNotApplied":"Voucher not applied",
+    "pay":"Pay",
+    "proceedToCheckout":"Proceed to Checkout",
+    "discountCode":"Discount Code"
 }
