@@ -1,5 +1,6 @@
 import 'package:clothes_store_mobile_app/app/cubits/language/language_cubit.dart';
 import 'package:clothes_store_mobile_app/app/cubits/language/language_state.dart';
+import 'package:clothes_store_mobile_app/app/cubits/my_cart/my_cart_cubit.dart';
 import 'package:clothes_store_mobile_app/app/cubits/product_by_category/product_by_category_cubit.dart';
 import 'package:clothes_store_mobile_app/app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +9,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'app/cubits/check_out/check_out_cubit.dart';
 import 'app/cubits/home/home_cubit.dart';
-import 'app/cubits/my_card/my_card_cubit.dart';
 import 'app/cubits/sign_in/sign_in_cubit.dart';
 import 'app/routes/app_pages.dart';
 import 'app/routes/app_routes.dart';
@@ -29,7 +30,8 @@ void main() {
         ),
         BlocProvider(create: (_)=>SignInCubit()),
 
-        BlocProvider(create: (_)=>MyCardCubit()),
+        BlocProvider(create: (_)=>MyCartCubit()),
+        BlocProvider(create: (_)=>CheckOutCubit(),),
       ],
       child: const MyApp(),
     ),

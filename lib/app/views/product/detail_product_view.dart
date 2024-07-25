@@ -1,4 +1,6 @@
-import 'package:clothes_store_mobile_app/app/models/cart_model.dart';
+import 'package:clothes_store_mobile_app/app/cubits/check_out/check_out_cubit.dart';
+import 'package:clothes_store_mobile_app/app/cubits/my_cart/my_cart_cubit.dart';
+import 'package:clothes_store_mobile_app/app/models/check_out.dart';
 import 'package:clothes_store_mobile_app/app/views/home/components/category/decription_product.dart';
 import 'package:clothes_store_mobile_app/app/views/home/components/category/select_color.dart';
 import 'package:clothes_store_mobile_app/app/views/home/components/category/select_size.dart';
@@ -10,10 +12,9 @@ import 'package:flutter_svg/svg.dart';
 import '../../constants/assets.dart';
 import '../../constants/color_constants.dart';
 import '../../constants/text_style.dart';
-import '../../cubits/my_card/my_card_cubit.dart';
 import '../../custom/widgets/animation_loading.dart';
 import '../../l10n/l10n.dart';
-import '../../models/product_card.dart';
+import '../../models/product_cart.dart';
 import '../../models/product_model.dart';
 
 class DetailProduct extends StatefulWidget {
@@ -175,7 +176,7 @@ class _DetailProductState extends State<DetailProduct> {
               GestureDetector(
                 child: Container(
                   padding: EdgeInsets.symmetric(
-                    horizontal: 12.w,
+                    horizontal: 8.w,
                     vertical: 8.h,
                   ),
                   decoration: BoxDecoration(
@@ -231,7 +232,7 @@ class _DetailProductState extends State<DetailProduct> {
     await Future.delayed(Duration(milliseconds: 300),(){
       Navigator.pop(context);
     });
-    context.read<MyCardCubit>().updateCard(productCart, 1);
+    context.read<MyCartCubit>().updateCart(productCart, 1);
     showGeneralDialog(
       context: context,
       barrierDismissible: true,

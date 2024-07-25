@@ -9,4 +9,5 @@ abstract class AppRoutes {
   static String LOCATION = '/location';
   static String ENTERLOCATION = '/enter-location';
   static String CARD = '/card';
+  static String CHECKOUT = '/card-checkout';
 }

@@ -46,7 +46,7 @@
     "selectColor":"Select Color",
     "addToCart":"Add to Cart",
     "quantity":"Quantity",
-    "totalPrice":"Total Price",
+    "totalPrice":"Total Cost",
     "addProductToCartSuccess":"Added to cart",
 
     "myWishList":"My WishList",
@@ -60,5 +60,17 @@
     "voucherNotApplied":"Voucher not applied",
     "pay":"Pay",
     "proceedToCheckout":"Proceed to Checkout",
-    "discountCode":"Discount Code"
+    "subTotal":"Subtotal",
+    "discount":"Discount",
+    "deliveryFee":"Delivery Fee",
+    "discountCode":"Discount Code",
+
+    "checkout":"Checkout",
+    "shippingAddress":"Shipping Address",
+    "home":"Home",
+    "chooseShippingType":"Choose Shipping Type",
+    "change":"Change",
+    "economy":"Economy",
+
+    "orderList":"Order List"
 }

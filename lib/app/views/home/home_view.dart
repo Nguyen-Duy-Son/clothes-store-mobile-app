@@ -34,7 +34,6 @@ class _HomeViewState extends State<HomeView>
     if (mounted)
       setState(() {});
   }
-  bool _hideBottomNavBar = false;
   int pageBody = 0;
 
   @override

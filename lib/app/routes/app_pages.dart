@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:clothes_store_mobile_app/app/routes/app_routes.dart';
 
+import '../views/check_out/check_out_view.dart';
 import '../views/home/home_view.dart';
 import '../views/location/enter_location_view.dart';
 import '../views/location/location_view.dart';

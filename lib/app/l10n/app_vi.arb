@@ -47,7 +47,7 @@
     "selectColor":"Chọn Màu",
     "addToCart":"Thêm vào giỏ hàng",
     "quantity":"Số Lượng",
-    "totalPrice":"Tổng Tiền",
+    "totalPrice":"Tổng Chi Phí",
     "addProductToCartSuccess":"Đã thêm vào giỏ hàng",
 
     "myWishList":"Danh Sách Yêu Thích",
@@ -61,5 +61,17 @@
     "voucherNotApplied":"Mã không hợp lệ",
     "pay":"Thanh Toán",
     "proceedToCheckout":"Tiến Hành Thanh Toán",
-    "delete":"Xóa"
+    "subTotal":"Tổng Tiền",
+    "delete":"Xóa",
+    "deliveryFee":"Phí Vận Chuyển",
+    "discount":"Giảm Giá",
+
+    "checkout":"Thanh Toán",
+    "shippingAddress":"Địa Chỉ Giao Hàng",
+    "home":"Nhà",
+    "chooseShippingType":"Chọn Loại Vận Chuyển",
+    "economy":"Tiết Kiệm",
+    "change":"Thay đổi",
+
+    "orderList":"Danh Sách Đơn Hàng"
 }

@@ -1,4 +1,4 @@
-import 'package:clothes_store_mobile_app/app/cubits/my_card/my_card_cubit.dart';
+import 'package:clothes_store_mobile_app/app/cubits/check_out/check_out_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,7 +39,8 @@ class _InputFormFieldWidgetState extends State<InputFormFieldWidget> {
           EdgeInsets.symmetric(vertical: 8.h, horizontal: 20.w),
           suffixIcon: GestureDetector(
             onTap: () {
-              widget.read!=true?context.read<MyCardCubit>().applyVoucher(widget.voucherController.text):null;
+              widget.read==true?context.read<CheckOutCubit>().applyVoucher(widget.voucherController.text):null;
+              widget.read!=true?Navigator.pop(context):null;
             },
             child: Container(
               padding: EdgeInsets.symmetric(

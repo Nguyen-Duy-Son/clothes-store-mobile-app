@@ -11,6 +11,7 @@ import '../../constants/assets.dart';
 import '../../constants/color_constants.dart';
 import '../../cubits/home/home_cubit.dart';
 import '../../cubits/home/home_state.dart';
+import '../../custom/widgets/app_bar_widget.dart';
 import '../../l10n/l10n.dart';
 import '../../models/product_model.dart';
 import '../product/product_widget.dart';
@@ -34,35 +35,7 @@ class _WishListViewState extends State<WishListView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(52.h),
-          child:Container(
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: ColorConstants.neutralLight80.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: Offset(0, 3),
-                ),
-              ],
-            ),
-            child: AppBar(
-              automaticallyImplyLeading: false,
-              title: Padding(
-                padding: EdgeInsets.only(top: 10.h),
-                child: Text(
-                  S.of(context).myWishList,
-                  style: TextStyleConstant.lightLight28.copyWith(
-                    color: ColorConstants.neutralLight120, height: 0.9,
-                  ),
-                ),
-              ),
-              centerTitle: true,
-            ),
-          ),
-        ),
-
+        appBar: AppBarWidget(title: S.of(context).myWishList),
         body: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             if (state is HomeLoading) {

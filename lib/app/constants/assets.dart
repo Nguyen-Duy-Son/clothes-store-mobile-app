@@ -32,6 +32,7 @@ class _AssetsIcons {
   final add = 'assets/icons/add.svg';
   final trashCan = 'assets/icons/trash-can.svg';
   final check = 'assets/icons/check.svg';
+  final shippingBox = 'assets/icons/shippingbox.svg';
 }
 
 class _AssetsImages {
