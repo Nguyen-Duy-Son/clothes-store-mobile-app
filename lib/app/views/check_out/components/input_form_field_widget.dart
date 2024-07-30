@@ -36,18 +36,16 @@ class _InputFormFieldWidgetState extends State<InputFormFieldWidget> {
             color: ColorConstants.neutralLight80,
           ),
           contentPadding:
-          EdgeInsets.symmetric(vertical: 8.h, horizontal: 20.w),
+          EdgeInsets.symmetric(vertical: 6.h, horizontal: 20.w),
           suffixIcon: GestureDetector(
             onTap: () {
-              widget.read==true?context.read<CheckOutCubit>().applyVoucher(widget.voucherController.text):null;
-              widget.read!=true?Navigator.pop(context):null;
+              context.read<CheckOutCubit>().applyVoucher(widget.voucherController.text);
             },
             child: Container(
               padding: EdgeInsets.symmetric(
                 horizontal: 12.w,
                 vertical: 6.h,
               ),
-              margin: EdgeInsets.only(right: 4.w),
               decoration: BoxDecoration(
                 color: ColorConstants.primaryDark70,
                 borderRadius: BorderRadius.circular(50),

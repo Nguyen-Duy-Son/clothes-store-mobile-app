@@ -33,6 +33,10 @@ class _AssetsIcons {
   final trashCan = 'assets/icons/trash-can.svg';
   final check = 'assets/icons/check.svg';
   final shippingBox = 'assets/icons/shippingbox.svg';
+  final discount = 'assets/icons/discount.svg';
+  final payCard = 'assets/icons/pay-card.svg';
+  final payPaypal = 'assets/icons/pay-paypal.svg';
+  final payHome = 'assets/icons/pay-home.svg';
 }
 
 class _AssetsImages {

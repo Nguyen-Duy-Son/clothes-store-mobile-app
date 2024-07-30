@@ -71,6 +71,23 @@
     "chooseShippingType":"Choose Shipping Type",
     "change":"Change",
     "economy":"Economy",
+    "noProductInCart":"No product in cart",
 
-    "orderList":"Order List"
+    "detailPayment":"Detail Payment",
+    "orderList":"Order List",
+    "expired":"Expired",
+    "decrease":"Decrease",
+    "expiresIn":"Expires in",
+    "copyCode":"Copy Code",
+    "bestOffersForYou":"Best Offers For You",
+    "paymentMethods":"Payment Methods",
+    "insufficientFunds":"Sorry, the account balance is not enough to pay, please choose another method to pay.",
+    "agree":"Agree",
+    "cancel":"Cancel",
+    "titleDialogRemove":"Are you sure you want to remove this product from your cart?",
+
+    "thankYouForShopping":"Thank you for your purchase.",
+    "paymentSuccess":"Payment Success!",
+    "backToHome":"Back to home",
+    "viewOrder":"View order"
 }

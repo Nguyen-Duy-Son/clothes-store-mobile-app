@@ -14,16 +14,28 @@ import '../../../models/product_cart.dart';
 
 class ProductOfCart extends StatefulWidget {
   const ProductOfCart(
-      {super.key, required this.product, required this.onDismissed});
+      {super.key,
+      required this.product,
+      required this.onDismissed,
+      required this.onRemove,
+      required this.onAdd});
 
   final ProductCart product;
   final VoidCallback onDismissed;
+  final VoidCallback onRemove;
+  final VoidCallback onAdd;
 
   @override
   State<ProductOfCart> createState() => _ProductOfCartState();
 }
 
 class _ProductOfCartState extends State<ProductOfCart> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MyCartCubit, MyCartState>(
@@ -111,12 +123,94 @@ class _ProductOfCartState extends State<ProductOfCart> {
                           Assets.icons.remove,
                         ),
                       ),
+                      // onTap: ()=>widget.onRemove(),
                       onTap: () {
-                        setState(() {
-                          context
-                              .read<MyCartCubit>()
-                              .updateCart(widget.product, 0);
-                        });
+                        if (widget.product.count == 1) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Center(
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height: 160.h,
+                                  width: 400.w,
+                                  child: Dialog(
+                                    child: Column(
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.all(8.w),
+                                          child: Center(
+                                            child: Text(
+                                              S.of(context).titleDialogRemove,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyleConstant.lightLight26.copyWith(
+                                                color: ColorConstants.neutralLight120,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 40.h,
+                                          padding: EdgeInsets.only(left: 24.w, right: 24.w),
+                                          decoration: const BoxDecoration(
+                                            border: Border(
+                                              top: BorderSide(
+                                                color: ColorConstants.neutralLight70,
+                                                width: 1,
+                                              ),
+                                            ),
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Container(
+                                                width: 100.w,
+                                                alignment: Alignment.center,
+                                                child: GestureDetector(
+                                                  child: Text(
+                                                      S.of(context).cancel,
+                                                      style: TextStyleConstant.lightLight24,
+                                                      textAlign: TextAlign.center,
+                                                  ),
+                                                  onTap: () {
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                ),
+                                              ),
+                                              Container(
+                                                width: 1,
+                                                color: ColorConstants.neutralLight70,
+                                              ),
+                                              SizedBox(
+                                                width: 100.w,
+                                                child: GestureDetector(
+                                                  child: Text(
+                                                    S.of(context).delete,
+                                                    style: TextStyleConstant.lightLight24.copyWith(
+                                                      color: ColorConstants.accentRed,
+                                                    ),textAlign: TextAlign.center,
+                                                    ),
+                                                  onTap: () async {
+                                                    Navigator.of(context).pop();
+                                                    widget.onDismissed();
+                                                  },
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+
+                        } else {
+                          widget.onRemove();
+                        }
                       },
                     ),
                     SizedBox(
@@ -135,23 +229,18 @@ class _ProductOfCartState extends State<ProductOfCart> {
                       width: 8.w,
                     ),
                     GestureDetector(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: ColorConstants.primaryLight120,
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                          child: SvgPicture.asset(
-                            Assets.icons.add,
-                            color: ColorConstants.neutralLight10,
-                          ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: ColorConstants.primaryLight120,
+                          borderRadius: BorderRadius.circular(6),
                         ),
-                        onTap: () {
-                          setState(() {
-                            context
-                                .read<MyCartCubit>()
-                                .updateCart(widget.product, 1);
-                          });
-                        }),
+                        child: SvgPicture.asset(
+                          Assets.icons.add,
+                          color: ColorConstants.neutralLight10,
+                        ),
+                      ),
+                      onTap: () => widget.onAdd(),
+                    ),
                   ],
                 ),
               )
@@ -162,3 +251,48 @@ class _ProductOfCartState extends State<ProductOfCart> {
     );
   }
 }
+// showDialog(
+//   context: context,
+//   builder: (BuildContext context) {
+//     return AlertDialog(
+//       content: Text(
+//         S
+//           .of(context)
+//           .titleDialogRemove,
+//           style: TextStyleConstant.regularLight26
+//               .copyWith(
+//             color: ColorConstants.neutralLight120,
+//           ),
+//         textAlign: TextAlign.center,
+//       ),
+//       actions: [
+//         Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//           children: [
+//             GestureDetector(
+//               child: Text(S
+//                   .of(context)
+//                   .cancel),
+//               onTap: () {
+//                 Navigator.of(context).pop();
+//               },
+//             ),
+//             VerticalDivider(
+//               color: ColorConstants.neutralLight70,
+//               thickness: 1,
+//             ),
+//             GestureDetector(
+//               child: Text(S
+//                   .of(context)
+//                   .delete),
+//               onTap: () async {
+//                 Navigator.of(context).pop();
+//                 widget.onDismissed();
+//               },
+//             ),
+//           ]
+//         )
+//       ],
+//     );
+//   },
+// );

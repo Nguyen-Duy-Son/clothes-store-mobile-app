@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:clothes_store_mobile_app/app/routes/app_routes.dart';
 
 import '../views/check_out/check_out_view.dart';
+import '../views/check_out/components/pay_methods/payment_success_view.dart';
 import '../views/home/home_view.dart';
 import '../views/location/enter_location_view.dart';
 import '../views/location/location_view.dart';
@@ -25,6 +26,7 @@ abstract class AppPages {
     AppRoutes.HOME: (context) => const HomeView(),
     AppRoutes.LOCATION: (context) => const LocationView(),
     AppRoutes.ENTERLOCATION: (context) => const EnterLocationView(),
-    AppRoutes.CARD: (context) => const CartView(),
+    AppRoutes.CART: (context) => const CartView(),
+    AppRoutes.PAYMENTSUCCESS: (context) => const PaymentSuccessView(),
   };
 }

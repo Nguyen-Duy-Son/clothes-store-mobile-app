@@ -1,6 +1,7 @@
 import 'package:clothes_store_mobile_app/app/cubits/check_out/check_out_cubit.dart';
 import 'package:clothes_store_mobile_app/app/cubits/my_cart/my_cart_cubit.dart';
-import 'package:clothes_store_mobile_app/app/models/check_out.dart';
+import 'package:clothes_store_mobile_app/app/custom/widgets/app_bar_widget.dart';
+import 'package:clothes_store_mobile_app/app/models/shipping_model.dart';
 import 'package:clothes_store_mobile_app/app/views/home/components/category/decription_product.dart';
 import 'package:clothes_store_mobile_app/app/views/home/components/category/select_color.dart';
 import 'package:clothes_store_mobile_app/app/views/home/components/category/select_size.dart';
@@ -53,34 +54,36 @@ class _DetailProductState extends State<DetailProduct> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Container(
-            margin: EdgeInsets.only(top: 8.h),
-            child: Text(
-              S.of(context).productDetail,
-              style: TextStyleConstant.lightLight28.copyWith(
-                color: ColorConstants.neutralLight120,
-              ),
-            ),
-          ),
-          actions: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              child: GestureDetector(
-                onTap: toggleFavourite,
-                child: SvgPicture.asset(
-                  Assets.icons.heart,
-                  width: 24.w,
-                  height: 24.h,
-                  color: !isFavourite
-                      ? ColorConstants.neutralLight70
-                      : ColorConstants.accentRed,
-                ),
-              ),
-            ),
-          ],
-        ),
+        appBar:
+        // AppBar(
+        //   centerTitle: true,
+        //   title: Container(
+        //     margin: EdgeInsets.only(top: 8.h),
+        //     child: Text(
+        //       S.of(context).productDetail,
+        //       style: TextStyleConstant.lightLight28.copyWith(
+        //         color: ColorConstants.neutralLight120,
+        //       ),
+        //     ),
+        //   ),
+        //   actions: [
+        //     Container(
+        //       padding: EdgeInsets.symmetric(horizontal: 16.w),
+        //       child: GestureDetector(
+        //         onTap: toggleFavourite,
+        //         child: SvgPicture.asset(
+        //           Assets.icons.heart,
+        //           width: 24.w,
+        //           height: 24.h,
+        //           color: !isFavourite
+        //               ? ColorConstants.neutralLight70
+        //               : ColorConstants.accentRed,
+        //         ),
+        //       ),
+        //     ),
+        //   ],
+        // ),
+        AppBarWidget(title: S.of(context).productDetail, isBackButton: true),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -190,13 +193,13 @@ class _DetailProductState extends State<DetailProduct> {
                         Assets.icons.bag,
                         width: 24.w,
                         height: 24.h,
-                        color: ColorConstants.neutralLight70,
+                        color: ColorConstants.neutralLight10,
                       ),
                       SizedBox(width: 4.w),
                       Text(
                         S.of(context).addToCart,
                         style: TextStyleConstant.regularLight26.copyWith(
-                          color: ColorConstants.neutralLight70,
+                          color: ColorConstants.neutralLight10,
                         ),
                       ),
                     ],
@@ -279,5 +282,8 @@ class _DetailProductState extends State<DetailProduct> {
         );
       },
     );
+    await Future.delayed(Duration(milliseconds: 600),(){
+      Navigator.pop(context);
+    });
   }
 }

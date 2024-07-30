@@ -8,6 +8,7 @@ abstract class AppRoutes {
   static String HOME = '/home';
   static String LOCATION = '/location';
   static String ENTERLOCATION = '/enter-location';
-  static String CARD = '/card';
-  static String CHECKOUT = '/card-checkout';
+  static String CART = '/cart';
+  static String CHECKOUT = '/cart-checkout';
+  static String PAYMENTSUCCESS = '/payment-success';
 }

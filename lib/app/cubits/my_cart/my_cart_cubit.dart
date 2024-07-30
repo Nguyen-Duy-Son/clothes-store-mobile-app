@@ -17,7 +17,6 @@ class MyCartCubit extends Cubit<MyCartState>{
     }
   }
   Future<void> updateCart(ProductCart p, int option) async {
-    // emit(ProductLoading(state.cart, state.total,state.vouchers,false));
     try {
       MyCart cart = state.cart;
       final index = cart.listProducts!
@@ -32,7 +31,7 @@ class MyCartCubit extends Cubit<MyCartState>{
         if (index != -1) {
           if (cart.listProducts![index].count > 1) {
             cart.listProducts![index].count--;
-          } else {
+          } else  {
             cart.listProducts!.removeAt(index);
           }
         }

@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:clothes_store_mobile_app/app/cubits/check_out/check_out_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,7 +13,12 @@ import '../../../../custom/widgets/app_bar_widget.dart';
 import '../../../../l10n/l10n.dart';
 
 class ShipTypeView extends StatefulWidget {
-  const ShipTypeView({super.key, required this.checkOutState, required this.myCardState, required this.onShippingSelected});
+  const ShipTypeView(
+      {super.key,
+      required this.checkOutState,
+      required this.myCardState,
+      required this.onShippingSelected});
+
   final CheckOutState checkOutState;
   final MyCartState myCardState;
   final Function(int) onShippingSelected;
@@ -28,7 +33,9 @@ class _ShipTypeViewState extends State<ShipTypeView> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
+      child: BlocBuilder<CheckOutCubit, CheckOutState>(
+  builder: (context, state) {
+    return Scaffold(
         appBar: AppBarWidget(title: S.of(context).chooseShippingType),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
@@ -105,6 +112,9 @@ class _ShipTypeViewState extends State<ShipTypeView> {
           child: GestureDetector(
             onTap: () {
               if (selectedShippingId != null) {
+                context
+                    .read<CheckOutCubit>()
+                    .appVoucherShipping(widget.checkOutState.shippings.firstWhere((e)=>e.id==selectedShippingId));
                 Navigator.pop(context);
               }
             },
@@ -116,7 +126,9 @@ class _ShipTypeViewState extends State<ShipTypeView> {
             ),
           ),
         ),
-      ),
+      );
+  },
+),
     );
   }
 }

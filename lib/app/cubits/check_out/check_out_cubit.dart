@@ -1,32 +1,30 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../models/check_out.dart';
-import '../../models/product_cart.dart';
-import '../../models/my_cart.dart';
+import '../../models/shipping_model.dart';
+import '../../models/pay_method_model.dart';
 import '../../models/voucher_model.dart';
 import 'check_out_state.dart';
 
 class CheckOutCubit extends Cubit<CheckOutState> {
-  CheckOutCubit() : super(initialMyCardState());
+  CheckOutCubit() : super(initialCheckOutState());
 
   Future<void> getCheckOut(double totalCost) async {
-    emit(MyCardLoading());
+    emit(CheckOutLoading());
     try {
       double total = totalCost;
       List<Voucher> vouchersList = vouchers;
-      List<Shipping> shippingsList = shippingLists;
-      emit(MyCardLoaded(
+      List<Shipping> shippings = shippingLists;
+      List<PayMethod> payMethodsList = payMethods;
+      emit(CheckOutLoaded(
           total,
           vouchersList,
           Voucher(
               id: "",
               code: "",
               expiryDate: new DateTime(2022, 12, 12),
-              discount: 0),Shipping(id:"",name: "", cost: 0, timeEnd:new DateTime(
-          2022, 12, 12) , icon: "", timeStart: new DateTime(
-          2022, 12, 12)),shippingsList),);
+              discount: 0),shippings[0],shippings,payMethodsList, payMethodsList[2] ));
     } catch (e) {
-      emit(MyCardError(e.toString()));
+      emit(CheckOutError("lỗi$e"));
     }
   }
 
@@ -35,31 +33,25 @@ class CheckOutCubit extends Cubit<CheckOutState> {
       double total = state.total;
       if (state.voucherApplied.code == code) {
         return;
-      } else if (state.voucherApplied.code.isNotEmpty&&state.voucherApplied.id.isNotEmpty) {
-        total = total + state.voucherApplied.discount;
       }
       List<Voucher> vouchersList = state.vouchers;
       final voucher =
           vouchersList.firstWhere((element) => element.code == code);
       if (voucher.id.isNotEmpty && voucher.code.isNotEmpty) {
-        total = total - voucher.discount;
-        emit(MyCardLoaded(total, state.vouchers, voucher,Shipping(id:"",name: "", cost: 0, timeEnd:new DateTime(
-          2022, 12, 12) , icon: "", timeStart: new DateTime(
-          2022, 12, 12)),state.shippings));
+        // total = total - voucher.discount;
+        emit(CheckOutLoaded(total, state.vouchers, voucher,state.shipping,state.shippings,state.payMethods,state.payMethod));
       } else {
-        emit(MyCardError('Voucher not found'));
+        emit(CheckOutError('Voucher not found'));
       }
     } catch (e) {
-      emit(MyCardLoaded(
+      emit(CheckOutLoaded(
           state.total,
           state.vouchers,
           Voucher(
               id: "",
               code: "",
               expiryDate: new DateTime(2022, 12, 12),
-              discount: 0),Shipping(id:"",name: "", cost: 0, timeEnd:new DateTime(
-          2022, 12, 12) , icon: "", timeStart: new DateTime(
-          2022, 12, 12)),state.shippings));
+              discount: 0),state.shipping,state.shippings,state.payMethods,state.payMethod));
     }
   }
   Future<void> appVoucherShipping(Shipping ship) async{
@@ -68,13 +60,13 @@ class CheckOutCubit extends Cubit<CheckOutState> {
       if (state.shipping.id == ship.id) {
         return;
       } else if (state.shipping.id.isNotEmpty&&state.shipping.name.isNotEmpty) {
-        total = total + state.shipping.cost;
+        // total = total + ship.cost;
         emit(
-            MyCardLoaded(total, state.vouchers, state.voucherApplied, ship, state.shippings)
+            CheckOutLoaded(total, state.vouchers, state.voucherApplied, ship, state.shippings,state.payMethods,state.payMethod)
         );
       }
     } catch (e) {
-      emit(MyCardLoaded(
+      emit(CheckOutLoaded(
           state.total,
           state.vouchers,
           Voucher(
@@ -83,7 +75,36 @@ class CheckOutCubit extends Cubit<CheckOutState> {
               expiryDate: new DateTime(2022, 12, 12),
               discount: 0),Shipping(id:"",name: "", cost: 0, timeEnd:new DateTime(
           2022, 12, 12) , icon: "", timeStart: new DateTime(
-          2022, 12, 12)),state.shippings));
+          2022, 12, 12)),state.shippings,state.payMethods,state.payMethod));
+    }
+  }
+  Future<void> updatePayMethod(PayMethod payMethod) async{
+    try {
+      if (state.payMethod.id == payMethod.id) {
+        return;
+      } else if (state.payMethod.id.isNotEmpty&&state.payMethod.name.isNotEmpty) {
+        emit(
+            CheckOutLoaded(state.total, state.vouchers, state.voucherApplied, state.shipping, state.shippings,state.payMethods,payMethod)
+        );
+      }
+    } catch (e) {
+      emit(CheckOutLoaded(
+          state.total,
+          state.vouchers,
+          Voucher(
+              id: "",
+              code: "",
+              expiryDate: new DateTime(2022, 12, 12),
+              discount: 0),Shipping(id:"",name: "", cost: 0, timeEnd:new DateTime(
+          2022, 12, 12) , icon: "", timeStart: new DateTime(
+          2022, 12, 12)),state.shippings,state.payMethods,state.payMethod));
+    }
+  }
+  Future<void> payment() async{
+    try {
+      emit(initialCheckOutState());
+    } catch (e) {
+      emit(CheckOutError("lỗi$e"));
     }
   }
 }
@@ -121,7 +142,7 @@ final List<Map<String, dynamic>> jsonVoucher = [
 ];
 final List<Voucher> vouchers =
     jsonVoucher.map((e) => Voucher.fromJson(e)).toList();
-final jsonShipping=[
+final List<Map<String, dynamic>> jsonShipping=[
   {
     "id": "1",
     "name": "Tiết Kiệm",
@@ -148,3 +169,14 @@ final jsonShipping=[
   }
 ];
 final shippingLists = jsonShipping.map((e) => Shipping.fromJson(e)).toList();
+List<Map<String, dynamic>> jsonList = [
+  {"id":"1","name": 'Thanh toán bằng thẻ', "icon": 'assets/icons/pay-card.svg', "totalMoney": 300.0},
+  {"id":"2","name": 'Thanh toán qua PayPal', "icon": 'assets/icons/pay-paypal.svg',"totalMoney": 200.0},
+  {"id":"3","name": 'Thanh toán tại nhà', "icon": 'assets/icons/pay-home.svg',"totalMoney": 0.0},
+  {"id":"4","name": 'Thanh toán bằng Apple Pay', "icon": 'assets/icons/logo-apple.svg',"totalMoney": 500.0},
+  {"id":"5","name": 'Thanh toán bằng Goggle Pay', "icon": 'assets/icons/logo-goggle.svg',"totalMoney": 100.0},
+];
+
+List<PayMethod> payMethods = jsonList
+    .map((jsonItem) => PayMethod.fromJson(jsonItem))
+    .toList();

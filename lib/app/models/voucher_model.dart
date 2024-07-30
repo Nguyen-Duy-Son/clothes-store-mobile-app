@@ -11,7 +11,7 @@ class Voucher{
       id: json['id'],
       code: json['code'],
       expiryDate: DateTime.parse(json['expiryDate']),
-      discount: json['discount']
+      discount: json['discount'] as double,
     );
   }
 

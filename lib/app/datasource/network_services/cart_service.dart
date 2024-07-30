@@ -1,7 +1,7 @@
 import 'package:clothes_store_mobile_app/app/core/base/base_connect.dart';
 import 'package:clothes_store_mobile_app/app/core/config/api_url.dart';
 
-import '../../models/check_out.dart';
+import '../../models/shipping_model.dart';
 
 // class CartService {
 //   static Future<dynamic> getCart() async {

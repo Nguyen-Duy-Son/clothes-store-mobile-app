@@ -35,7 +35,7 @@ class _WishListViewState extends State<WishListView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBarWidget(title: S.of(context).myWishList),
+        appBar: AppBarWidget(title: S.of(context).myWishList, isBackButton: false),
         body: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             if (state is HomeLoading) {
@@ -53,28 +53,30 @@ class _WishListViewState extends State<WishListView> {
               var secondHalf = products.sublist(halfLength);
               return Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        children: firstHalf.map((e) {
-                          return ProductWidget(e:e);
-                        }).toList(),
+                child: SingleChildScrollView(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          children: firstHalf.map((e) {
+                            return ProductWidget(e:e);
+                          }).toList(),
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 12.w,
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: secondHalf.map((e) {
-                          return ProductWidget(e: e);
-                        }).toList(),
+                      SizedBox(
+                        width: 12.w,
                       ),
-                    ),
-                  ],
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: secondHalf.map((e) {
+                            return ProductWidget(e: e);
+                          }).toList(),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             } else {

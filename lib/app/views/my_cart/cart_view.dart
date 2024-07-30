@@ -1,3 +1,4 @@
+import 'package:clothes_store_mobile_app/app/models/product_cart.dart';
 import 'package:clothes_store_mobile_app/app/views/check_out/check_out_view.dart';
 import 'package:clothes_store_mobile_app/app/views/my_cart/components/product_cart_widget.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,6 @@ class CartView extends StatefulWidget {
 }
 
 class _CartViewState extends State<CartView> {
-
   @override
   void initState() {
     super.initState();
@@ -48,9 +48,7 @@ class _CartViewState extends State<CartView> {
               title: Padding(
                 padding: EdgeInsets.only(top: 10.h),
                 child: Text(
-                  S
-                      .of(context)
-                      .myCart,
+                  S.of(context).myCart,
                   style: TextStyleConstant.lightLight28.copyWith(
                     color: ColorConstants.neutralLight120,
                     height: 0.9,
@@ -74,67 +72,78 @@ class _CartViewState extends State<CartView> {
                   child: Text(state.message),
                 );
               } else if (state is MyCartLoaded) {
-                return Column(
-                  children: [
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: state.cart.listProducts!.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: EdgeInsets.only(top: 12.h),
-                            child: Column(
-                              children: [
-                                ProductOfCart(
-                                  product: state.cart.listProducts![index],
-                                  onDismissed: () =>
-                                      showDiaLog(context, state, index),
-                                ),
-                                const Divider(
-                                  color: ColorConstants.neutralLight70,
-                                  thickness: 1,
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 20.h),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  CheckOutView(
-                                    state: state,
+                return state.cart.listProducts!.isNotEmpty
+                    ? Column(
+                        children: [
+                          Expanded(
+                            child: ListView.builder(
+                              itemCount: state.cart.listProducts!.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: EdgeInsets.only(top: 12.h),
+                                  child: Column(
+                                    children: [
+                                      ProductOfCart(
+                                        product:
+                                            state.cart.listProducts![index],
+                                        onDismissed: () =>
+                                            showDiaLog(context, state, index),
+                                        onRemove: () => removeCountOfProduct(
+                                            state.cart.listProducts![index]),
+                                        onAdd: () => addCountOfProduct(
+                                            state.cart.listProducts![index]),
+                                      ),
+                                      const Divider(
+                                        color: ColorConstants.neutralLight70,
+                                        thickness: 1,
+                                      )
+                                    ],
                                   ),
+                                );
+                              },
                             ),
-                          );
-                        },
-                        child: Container(
-                          height: 44.h,
-                          decoration: BoxDecoration(
-                            color: ColorConstants.primaryLight110,
-                            borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Center(
-                            child: Text(
-                              S
-                                  .of(context)
-                                  .proceedToCheckout,
-                              style:
-                              TextStyleConstant.lightLight26.copyWith(
-                                color: ColorConstants.neutralLight10,
+                          Padding(
+                            padding: EdgeInsets.only(top: 20.h),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => CheckOutView(
+                                      state: state,
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                height: 44.h,
+                                decoration: BoxDecoration(
+                                  color: ColorConstants.primaryLight110,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    S.of(context).proceedToCheckout,
+                                    style:
+                                        TextStyleConstant.lightLight26.copyWith(
+                                      color: ColorConstants.neutralLight10,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
                           ),
+                        ],
+                      )
+                    : Center(
+                        child: Text(
+                          S.of(context).noProductInCart,
+                          style: TextStyleConstant.lightLight26.copyWith(
+                            color: ColorConstants.neutralLight120,
+                          ),
                         ),
-                      ),
-                    ),
-                  ],
-                );
+                      );
               }
               return const SizedBox();
             },
@@ -149,9 +158,7 @@ class _CartViewState extends State<CartView> {
     showGeneralDialog(
       context: context,
       barrierDismissible: true,
-      barrierLabel: MaterialLocalizations
-          .of(context)
-          .modalBarrierDismissLabel,
+      barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
       barrierColor: Colors.transparent,
       transitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (BuildContext buildContext, Animation animation,
@@ -165,5 +172,14 @@ class _CartViewState extends State<CartView> {
     myCardCubit.updateCart(state.cart.listProducts![index], 3);
     setState(() {});
   }
-}
 
+  void removeCountOfProduct(ProductCart productCart) {
+    context.read<MyCartCubit>().updateCart(productCart, 0);
+    setState(() {});
+  }
+
+  void addCountOfProduct(ProductCart productCart) {
+    context.read<MyCartCubit>().updateCart(productCart, 1);
+    setState(() {});
+  }
+}

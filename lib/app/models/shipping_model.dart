@@ -1,6 +1,3 @@
-import 'package:clothes_store_mobile_app/app/models/product_cart.dart';
-
-
 class Shipping{
   final String id;
   final String name;
@@ -22,7 +19,7 @@ class Shipping{
     return Shipping(
       id: json['id'],
       name: json['name'],
-      cost: json['cost'],
+      cost: json['cost'] as double,
       timeEnd: DateTime.parse(json['timeEnd']),
       icon: json['icon'],
       timeStart: DateTime.parse(json['timeStart']),

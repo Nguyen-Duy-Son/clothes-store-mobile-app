@@ -1,5 +1,6 @@
 import 'package:clothes_store_mobile_app/app/cubits/product_by_category/product_by_category_cubit.dart';
 import 'package:clothes_store_mobile_app/app/cubits/product_by_category/product_by_category_state.dart';
+import 'package:clothes_store_mobile_app/app/custom/widgets/app_bar_widget.dart';
 import 'package:clothes_store_mobile_app/app/views/product/product_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,18 +31,7 @@ class _DetailCategoryWidgetState extends State<DetailCategoryWidget> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: true,
-            title: Container(
-              child: Text(
-                widget.category.name,
-                style: TextStyleConstant.regularLight32.copyWith(
-                  color: ColorConstants.neutralLight120,
-                ),
-              ),
-            ),
-            centerTitle: true,
-          ),
+          appBar: AppBarWidget(title: widget.category.name, isBackButton: true),
           body: SingleChildScrollView(
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),

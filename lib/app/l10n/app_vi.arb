@@ -72,6 +72,23 @@
     "chooseShippingType":"Chọn Loại Vận Chuyển",
     "economy":"Tiết Kiệm",
     "change":"Thay đổi",
+    "noProductInCart":"Không có sản phẩm nào trong giỏ hàng",
+    "detailPayment":"Chi Tiết Thanh Toán",
+    "orderList":"Danh Sách Đơn Hàng",
+    "expired":"Hết hạn",
+    "expiresIn":"Hết hạn trong",
+    "decrease":"Giảm",
+    "copyCode":"Sao chép mã",
+    "bestOffersForYou":"Ư  u đãi tốt nhất dành cho bạn",
+    "paymentMethods":"Phương thức thanh toán",
+    "insufficientFunds":"Rất tiếc, số dư tài khoản không đủ để thanh toán, vui lòng chọn phương thức thanh toán khác.",
+    "agree":"Đồng ý",
+    "cancel":"Hủy bỏ",
+    "titleDialogRemove":"Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng không?",
 
-    "orderList":"Danh Sách Đơn Hàng"
+
+    "thankYouForShopping":"Cảm ơn bạn đã mua hàng.",
+    "paymentSuccess":"Thanh toán thành công!",
+    "viewOrder":"Xem đơn hàng",
+    "backToHome":"Quay lại trang chủ"
 }

@@ -7,8 +7,8 @@ import '../../constants/text_style.dart';
 
 class AppBarWidget extends PreferredSize {
   final String title;
-
-  AppBarWidget({required this.title})
+  final bool isBackButton;
+  AppBarWidget({required this.title, this.isBackButton = true})
       : super(
     preferredSize: Size.fromHeight(52.h),
     child: Container(
@@ -23,12 +23,13 @@ class AppBarWidget extends PreferredSize {
         ],
       ),
       child: AppBar(
-        leading: Padding(
+        automaticallyImplyLeading: isBackButton,
+        leading:isBackButton? Padding(
           padding: EdgeInsets.only(top: 12.h),
           child: BackButton(
             color: ColorConstants.neutralLight120,
           ),
-        ),
+        ):null,
         title: Padding(
           padding: EdgeInsets.only(top: 12.h),
           child: Text(
