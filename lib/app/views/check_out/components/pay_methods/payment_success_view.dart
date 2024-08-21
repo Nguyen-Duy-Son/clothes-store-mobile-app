@@ -58,21 +58,26 @@ class _PaymentSuccessViewState extends State<PaymentSuccessView> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                width: double.infinity,
-                height: 50.h,
-                decoration: BoxDecoration(
-                  color: ColorConstants.primaryDark70,
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: Center(
-                  child: Text(
-                    S.of(context).viewOrder,
-                    style: TextStyleConstant.lightDark26.copyWith(
-                      color: ColorConstants.primaryLight10,
+              GestureDetector(
+                child: Container(
+                  width: double.infinity,
+                  height: 50.h,
+                  decoration: BoxDecoration(
+                    color: ColorConstants.primaryDark70,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: Center(
+                    child: Text(
+                      S.of(context).viewOrder,
+                      style: TextStyleConstant.lightDark26.copyWith(
+                        color: ColorConstants.primaryLight10,
+                      ),
                     ),
                   ),
                 ),
+                onTap: () {
+                  Navigator.popAndPushNamed(context, AppRoutes.MYORDER);
+                }
               ),
               SizedBox(height: 8.h),
               GestureDetector(

@@ -4,6 +4,7 @@ import 'package:clothes_store_mobile_app/app/views/my_cart/cart_view.dart';
 import 'package:clothes_store_mobile_app/app/views/home/components/category/category_widget.dart';
 import 'package:clothes_store_mobile_app/app/views/home/components/flash_sale_widget.dart';
 import 'package:clothes_store_mobile_app/app/views/home/components/page_view_widget.dart';
+import 'package:clothes_store_mobile_app/app/views/profile/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -57,7 +58,7 @@ class _HomeViewState extends State<HomeView>
     CartView(),
     WishListView(),
     CartView(),
-    CartView(),
+    ProfileView(),
   ];
 
   @override
@@ -83,7 +84,6 @@ class _HomeViewState extends State<HomeView>
                     onTap: (x) {
                       setState(() {
                         pageBody = x;
-
                       });
                     },
                     indicator: const UnderlineTabIndicator(

@@ -89,5 +89,41 @@
     "thankYouForShopping":"Thank you for your purchase.",
     "paymentSuccess":"Payment Success!",
     "backToHome":"Back to home",
-    "viewOrder":"View order"
+    "viewOrder":"View order",
+
+    "profile":"Profile",
+    "myOrders":"My Orders",
+    "yourProfile":"Your Profile",
+    "settings":"Settings",
+    "logout":"Logout",
+    "helpCenter":"Help Center",
+    "privacyPolicy":"Privacy Policy",
+    "transferLanguage": "Transfer Language",
+
+    "cancelationPolicy":"Cancellation Policy",
+    "termsCondition": "Terms & Conditions",
+    "titleCancelationPolicy":"Customers have the ability to cancel orders before they have been shipped by contacting our customer service team. For items that have already been delivered, we accept returns of unworn, unwashed, and undamaged merchandise within 30 days, at which point customers can initiate a return and receive a full refund to their original payment method. However, final sale items, personalized or custom-made orders, and any products that show signs of wear or damage are not eligible for returns or refunds. If you have any other questions about our Cancellation Policy, please don't hesitate to reach out to our support team at support@clothingapp.com or 1-800-123-4567.",
+    "titleTermCondition": "Welcome to [Your App Name]! By accessing or using our application, you agree to comply with and be bound by the following terms and conditions. Our app allows you to browse, purchase, and manage clothing items, and all sales are subject to product availability and confirmation of the order price. Prices for our products are subject to change without notice. We reserve the right to refuse service to anyone for any reason at any time. You are responsible for maintaining the confidentiality of your account and password and for restricting access to your device to prevent unauthorized access to your account. By placing an order, you agree to provide current, complete, and accurate purchase and account information. This includes ensuring your payment details are valid and up-to-date. Any personal data provided will be handled in accordance with our Privacy Policy, which outlines how we collect, use, and protect your personal information. We reserve the right to modify or terminate the service for any reason without notice at any time, which may include adding or removing features, discontinuing the service, or updating these terms. By continuing to use the app after any changes, you agree to the revised terms. Additionally, we are not responsible for any losses or damages that arise from your use of the app, including but not limited to, delays, inaccuracies, errors, or omissions in content, or any actions taken in reliance thereon. You agree to indemnify and hold [Your App Name], its directors, officers, employees, affiliates, agents, contractors, interns, suppliers, service providers, or licensors harmless from any claim or demand, including reasonable attorneys' fees, made by any third party due to or arising out of your breach of these terms or your violation of any law or the rights of a third party. If you have any questions or concerns about these Terms & Conditions, please contact our customer support team. Thank you for choosing [Your App Name] for your clothing needs!",
+
+    "canceled": "Canceled",
+    "completed": "Completed",
+    "active": "Active",
+    "trackOrder": "Track Order",
+    "leaveReview": "Leave Review",
+    "reOrder": "Re-Order",
+    "trackingId": "Tracking ID",
+    "orderDetail": "Order Detail",
+    "expectedDeliverDate": "Expected Delivery Date",
+    "orderStatus": "Order Status",
+    "orderPlaced": "Order Placed",
+    "inProcess": "In Process",
+    "shipped": "Shipped",
+    "delivered": "Delivered",
+
+    "titleLeaveReview": "How is your order?",
+    "youOverallRating": "Your overall rating",
+    "addDetailedReview": "Add detailed review",
+    "enterHere": "Enter here",
+    "addPhoto": "add photo",
+    "submit": "Submit"
 }

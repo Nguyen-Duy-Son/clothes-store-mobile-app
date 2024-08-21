@@ -219,7 +219,7 @@ class _DetailProductState extends State<DetailProduct> {
       count: 1,
       name: widget.product.name,
       image: widget.product.image,
-      price: widget.product.price,
+      price: widget.product.price.toDouble(),
       size: widget.product.size[selectedSize],
     );
     showGeneralDialog(

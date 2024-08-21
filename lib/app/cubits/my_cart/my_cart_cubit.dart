@@ -54,7 +54,7 @@ final Map<String, dynamic> jsonCart = {
       "count": 2,
       "name": "Product 1",
       "image": "https://loremflickr.com/640/480/fashion",
-      "price": 17,
+      "price": 17.0,
       "size": "M"
     },
     {
@@ -62,7 +62,7 @@ final Map<String, dynamic> jsonCart = {
       "count": 3,
       "name": "Product 2",
       "image": "https://loremflickr.com/640/480/fashion",
-      "price": 17,
+      "price": 17.0,
       "size": "L"
     },
     {
@@ -70,7 +70,7 @@ final Map<String, dynamic> jsonCart = {
       "count": 10,
       "name": "Product 2",
       "image": "https://loremflickr.com/640/480/fashion",
-      "price": 17,
+      "price": 17.0,
       "size": "XXL"
     },
   ]

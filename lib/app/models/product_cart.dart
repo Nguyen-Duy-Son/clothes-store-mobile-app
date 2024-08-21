@@ -2,7 +2,7 @@ class ProductCart{
   final String productId;
   final String name;
   final String image;
-  final int price;
+  final double price;
   final String size;
 
   int count;
@@ -21,7 +21,7 @@ class ProductCart{
       count: json['count'] as int,
       name: json['name'],
       image: json['image'],
-      price: json['price'] as int,
+      price: json['price'] as double,
       size: json['size'],
     );
   }

@@ -11,4 +11,7 @@ abstract class AppRoutes {
   static String CART = '/cart';
   static String CHECKOUT = '/cart-checkout';
   static String PAYMENTSUCCESS = '/payment-success';
+  static String PROFILE = '/profile';
+  static String PRIVACYPOLICY = '/privacy-policy';
+  static String MYORDER = '/my-order';
 }

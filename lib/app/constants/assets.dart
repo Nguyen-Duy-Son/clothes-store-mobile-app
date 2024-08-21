@@ -37,6 +37,16 @@ class _AssetsIcons {
   final payCard = 'assets/icons/pay-card.svg';
   final payPaypal = 'assets/icons/pay-paypal.svg';
   final payHome = 'assets/icons/pay-home.svg';
+  final pen = 'assets/icons/pen.svg';
+  final right = 'assets/icons/right.svg';
+  final profile = 'assets/icons/profile.svg';
+  final payment = 'assets/icons/payment.svg';
+  final setting = 'assets/icons/setting.svg';
+  final help = 'assets/icons/help.svg';
+  final logout = 'assets/icons/logout.svg';
+  final privacy = 'assets/icons/privacy.svg';
+  final order = 'assets/icons/order.svg';
+  final language = 'assets/icons/language.svg';
 }
 
 class _AssetsImages {
